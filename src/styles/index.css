@@ -1,6 +1,7 @@
 body,
 menu,
-p {
+p,
+figure {
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
@@ -20,7 +21,14 @@ h1 {
 
 html {
     width: 100%;
-    overflow-x: hidden;
+    height: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+body {
+    width: 100%;
+    height: 100%;
 }
 
 .header {
@@ -55,6 +63,7 @@ html {
     height: 28px;
     font-weight: 600;
     cursor: pointer;
+    text-align: right;
 }
 
 .menu button:hover {
@@ -98,27 +107,35 @@ html {
 
 .status_box {
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
 }
 
 .status {
     font-size: 18px;
     flex-grow: 1;
+    min-width: 640px;
 }
 
 .base {
     display: flex;
-    align-items: center;
-    font-size: 14px;;
+    align-items: flex-start;
+    font-size: 14px;
+    ;
+    line-height: 14px;
+    height: 28px;
 }
 
 .base div {
-    margin-left: 6px;
+    margin-left: 8px;
 }
 
 .footer {
     padding: 0px 50px;
     font-weight: 500;
     height: 32px;
+    text-align: center;
+    margin-top:20px;
 }
 
 .footer p {
@@ -129,8 +146,8 @@ html {
 }
 
 .icon-location {
-    width: 18px;
-    height: 18px;
+    width: 14px;
+    height: 14px;
 }
 
 table {
@@ -171,8 +188,17 @@ a:hover {
 
 .about_box,
 .education_box,
-.photo_box {
-    margin-top: 20px;
+.photo_box,
+.mobile_photo_box {
+    margin-top: 15px;
+}
+
+.about_box p {
+    font-size: 14px;
+}
+
+.about_box b {
+    font-size: 16px;
 }
 
 .school img {
@@ -186,12 +212,20 @@ a:hover {
 }
 
 .school {
-    width: 70px;
+    /* width: 70px; */
 }
 
 .school_info div {
     font-size: 14px;
     line-height: 20px;
+}
+
+.school_info b {
+    font-size: 16px;
+}
+
+.school_info {
+    margin-left: 12px;
 }
 
 .school_info .date {
@@ -257,3 +291,337 @@ a:hover {
     justify-content: center;
 }
 
+
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialog {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    color: #888;
+}
+
+video {
+    height: auto;
+    width: 100%;
+    max-width: 800px;
+}
+
+.mobile_tab_btn {
+    display: none;
+}
+
+.noshow {
+    display: none;
+}
+
+.mask_btns {
+    margin: 80px 0px 0px 30px;
+}
+
+.mask_btns button {
+    display: block;
+    height: 54px;
+    font-size: 32px;
+    margin-top: 10px;
+}
+
+.mask_btns .selected {
+    color: #1890ff;
+}
+
+.close {
+    margin: 22px 50px 0px 0px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 1.5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
+    transition: opacity .3s;
+}
+
+.container {
+    height: 100%;
+}
+
+#box {
+    width: 100%;
+    white-space: nowrap;
+    display: none;
+}
+
+#box .wrapper {
+    width: auto;
+    font-size: 105px;
+    color: #fff;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+#box .wrapper .gallery {
+    width: 276px;
+    /* Adjust the width as needed for your design */
+    height: 195px;
+    scroll-snap-align: start;
+    position: relative;
+    /* Allows positioning the caption */
+}
+
+.mobile_gallery {
+    margin-right: 12px;
+}
+
+.mobile_photo_box a:hover {
+    background-color: transparent;
+}
+
+.mobile_gallery .desc {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 5px;
+    text-align: center;
+    font-size: 12px;
+}
+
+.mobile_contact {
+    display: none;
+}
+
+.mobile_contact div:nth-child(n+2) {
+    margin-top: 10px;
+}
+
+.mobile_contact_info {
+    background: #bae7ff;
+    line-height: 24px;
+    margin-top: 5px;
+    word-wrap: break-word;
+}
+
+
+.work_desc {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+@media screen and (max-width: 1058px) {
+
+    .descrption {
+        width: calc(100% - 220px);
+    }
+
+    .base {
+        margin-top: 12px;
+        width: 100%;
+    }
+
+    .status_box {
+        flex-direction: row;
+    }
+
+    .status {
+        min-width: auto;
+    }
+
+    .content {
+        flex-wrap: wrap;
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 887px) {
+    .tabs {
+        display: none;
+    }
+
+    .mobile_tab_btn {
+        display: block;
+        justify-content: flex-start;
+        margin: 22px 0px;
+        text-align: right;
+    }
+
+    .photo {
+        float: none;
+        height: 100%;
+        display: flex;
+    }
+
+    .status {
+        width: 100%;
+    }
+
+    .content {
+        display: block;
+    }
+
+    .descrption {
+        min-width: auto;
+        width: 100%;
+    }
+
+    .photo_box {
+        display: none;
+    }
+
+    #box {
+        display: block;
+    }
+
+    table {
+        display: none;
+    }
+
+    .mobile_contact {
+        display: block;
+        margin-top: 12px;
+    }
+}
+
+
+.exp_content {
+    width: 100%;
+    font-size: 14px;
+    line-height: 20px;
+    max-height: 80px;
+    overflow: hidden;
+    position: relative;
+}
+
+.exp_show_content {
+    max-height: fit-content;
+    overflow: hidden;
+    position: relative;
+}
+
+.virtual {
+    position: absolute;
+    top: -20px;
+    left: 0;
+    right: 0;
+    max-height: 100px;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+.virtual span {
+    visibility: visible;
+}
+
+.more {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: white;
+}
+
+.light_btn {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.light_btn:hover {
+    color: #0a66c2;
+}
+
+.first_row {
+    display: flex;
+    align-items: baseline;
+}
+
+.animated-element {
+    /* Your SVG styles here */
+    transition: transform 0.3s ease;
+}
+
+.pulsating {
+    animation: pulse .5s alternate infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.5);
+    }
+}
+
+.custom-button {
+    display: block;
+    width: 60px;
+    height: 30px;
+    background: #bfbfbf;
+    color: black;
+    border: none;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+.custom-button:hover {
+    background-color: #1890ff;
+    color: white;
+}
+
+#form {
+    margin-top: 15px;
+}
+
+.rating {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5px;
+    line-height: 22px;
+}
+
+.rating div {
+    margin-right: 10px;
+}

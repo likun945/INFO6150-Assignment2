@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
     <link rel="icon" href="/assets/favicon-32x32.png" sizes="32x32" type="image/x-icon">
     <title>KUN LI | Software development engineer</title>
     <link rel="stylesheet" href="styles/index.css">
@@ -11,29 +12,34 @@
 </head>
 
 <body id="app">
-    <header class="header">
-        <div class="name">
-            <p>Kun Li</p>
-        </div>
-        <div class="tabs">
-            <menu class="menu">
-                <button>Home</button>
-                <button @click="toWork">Work</button>
-                <button>About</button>
-            </menu>
-        </div>
-    </header>
-    <hr class="delimiter" />
-    <div class="content">
-        <div class="photo">
-            <img src="/assets/me.png" alt="Image Description">
-        </div>
-        <div class="descrption">
-            <h1>Kun Li</h1>
-            <div class="right_desc">
-                <div class="status_box">
-                    <div class="status">Information Systems | NEU Graduate student | experienced developer</div>
-                    <div class="base">
+
+    <transition name="fade" :duration="{ enter: 300, leave: 500 }">
+        <div class="container" v-show="!mask">
+            <header class="header">
+                <div class="name">
+                    <p>Kun Li</p>
+                </div>
+                <div class="tabs">
+                    <menu class="menu">
+                        <button>Home</button>
+                        <button id="showDialogButton">Video</button>
+                        <button @click="toWork">Work</button>
+                    </menu>
+                </div>
+                <div class="mobile_tab_btn">
+                    <svg t="1694919187348" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" @click="clickMask" p-id="6534" width="28" height="28">
+                        <path
+                            d="M113 224h800c26.5 0 48-21.5 48-48s-21.5-48-48-48H113c-26.5 0-48 21.5-48 48s21.5 48 48 48z m800 240H433c-26.5 0-48 21.5-48 48s21.5 48 48 48h480c26.5 0 48-21.5 48-48s-21.5-48-48-48zM243.7 355.6L78.6 499.9c-6.7 5.8-7.3 15.9-1.5 22.6 0.5 0.5 1 1.1 1.5 1.5l165.1 144c3.3 2.9 8.4 2.6 11.3-0.8 1.3-1.5 2-3.3 2-5.3V361.6c0-4.4-3.6-8-8-8-1.9 0-3.8 0.7-5.3 2zM913 800H113c-26.5 0-48 21.5-48 48s21.5 48 48 48h800c26.5 0 48-21.5 48-48s-21.5-48-48-48z"
+                            p-id="6535"></path>
+                    </svg>
+                </div>
+            </header>
+            <!-- <hr class="delimiter" /> -->
+            <div class="content">
+                <div class="photo">
+                    <img src="/assets/me.png" alt="Image Description">
+                    <div class="base noshow">
                         <svg t="1694890181354" class="icon-location" viewBox="0 0 1024 1024" version="1.1"
                             xmlns="http://www.w3.org/2000/svg" p-id="4742" width="200" height="200">
                             <path d="M512 512m-512 0a512 512 0 1 0 1024 0 512 512 0 1 0-1024 0Z" fill="#B3DFFF"
@@ -45,133 +51,510 @@
                         <div>Boston, MA</div>
                     </div>
                 </div>
-                <div class="about_box">
-                    <p><b>About me: </b> I am a self-motivated software engineer with nearly 2 years of working
-                        experience in full-stack
-                        software development, mostly proficient in Web development, enjoy working in a fast-paced and
-                        agile
-                        team, and love to collaborate with other teams cross-functionally.
-                    </p>
-                </div>
-                <div class="photo_box" @mouseover="showArrow=true" @mouseleave="showArrow=false" ref="photo_box">
-                    <div class="photo_box_inner" :style="{marginLeft:-slideDistance+'px'}">
-                        <!-- <div class="video_box">
-                            <video controls width="200px" height="300px">
-                                <source src="/assets/intro.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="desc">Introduction</div>
-                        </div> -->
-                        <div class="gallery">
-                            <a target="_blank" href="/assets/cargurus.jpg">
-                                <img src="/assets/cargurus.jpg" alt="Cinque Terre" width="276" height="195">
-                            </a>
-                            <div class="desc">The first1 day at Cargurus</div>
-                        </div>
-                        <div class="gallery">
-                            <a target="_blank" href="/assets/cargurus.jpg">
-                                <img src="/assets/cargurus.jpg" alt="Cinque Terre" width="276" height="195">
-                            </a>
-                            <div class="desc">The first2 day at Cargurus</div>
-                        </div>
-                        <div class="gallery">
-                            <a target="_blank" href="/assets/cargurus.jpg">
-                                <img src="/assets/cargurus.jpg" alt="Cinque Terre" width="276" height="195">
-                            </a>
-                            <div class="desc">The first3 day at Cargurus</div>
-                        </div>
-                        <div class="gallery">
-                            <a target="_blank" href="/assets/cargurus.jpg">
-                                <img src="/assets/cargurus.jpg" alt="Cinque Terre" width="276" height="195">
-                            </a>
-                            <div class="desc">The first4 day at Cargurus</div>
-                        </div>
-                        <div class="gallery">
-                            <a target="_blank" href="/assets/cargurus.jpg">
-                                <img src="/assets/cargurus.jpg" alt="Cinque Terre" width="276" height="195">
-                            </a>
-                            <div class="desc">The first5 day at Cargurus</div>
-                        </div>
-                        <div class="gallery">
-                            <a target="_blank" href="/assets/cargurus.jpg">
-                                <img src="/assets/cargurus.jpg" alt="Cinque Terre" width="276" height="195">
-                            </a>
-                            <div class="desc">The first6 day at Cargurus</div>
-                        </div>
-                    </div>
-                    <div class="btn" v-if="showArrow && index > 0" @click="leftScroll">
-                        <div class="btn_wrapper">
-                            <svg t="1694896788721" class="icon" viewBox="0 0 1024 1024" version="1.1"
-                                xmlns="http://www.w3.org/2000/svg" p-id="6335" width="62.5%" height="62.5%">
-                                <path d="M512 640v256H384L0 512l384-384h128v256h512v256H512z" fill="#F04925"
-                                    p-id="6336"></path>
+                <div class="descrption">
+                    <div class="first_row">
+                        <h1 style="margin-right:15px">Kun Li</h1>
+                        <div @click="toggleAudio" class="animated-element" :class="{ pulsating: isPlaying }">
+                            <svg t="1694982031490" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" p-id="5747" width="18" height="18">
+                                <path
+                                    d="M915.154425 730.603146a31.345878 31.345878 0 0 1-22.225913-9.205964c-12.273952-12.273952-12.273952-32.177874 0-44.455826 43.977828-43.977828 68.201734-102.555599 68.201734-164.943356s-24.219905-120.965527-68.197734-164.947356c-12.273952-12.273952-12.273952-32.177874 0-44.455826 12.277952-12.271952 32.175874-12.271952 44.455826 0 55.853782 55.853782 86.611662 130.223491 86.611662 209.401182s-30.75988 153.5454-86.615662 209.397182a31.343878 31.343878 0 0 1-22.229913 9.209964z"
+                                    fill="#2D527C" p-id="5748"></path>
+                                <path
+                                    d="M834.128742 649.577463a31.345878 31.345878 0 0 1-22.225913-9.205964c-12.273952-12.273952-12.273952-32.177874 0-44.455827 46.273819-46.273819 46.273819-121.563525 0-167.835344-12.273952-12.273952-12.273952-32.177874 0-44.455827 12.277952-12.271952 32.175874-12.271952 44.455826 0 70.785723 70.785723 70.785723 185.961274 0 256.744998a31.347878 31.347878 0 0 1-22.229913 9.207964zM95.385627 756.187046C42.789833 756.187046 0 713.401213 0 660.803419V363.192581c0-52.593795 42.787833-95.385627 95.381627-95.385627s95.385627 42.787833 95.385628 95.385627v297.608838c0 52.599795-42.787833 95.385627-95.381628 95.385627z m0-425.508338c-17.92993 0-32.517873 14.587943-32.517873 32.517873v297.608838c0 17.92993 14.587943 32.517873 32.513873 32.517873 17.92993 0 32.513873-14.587943 32.513873-32.517873V363.196581c0.004-17.93193-14.583943-32.517873-32.509873-32.517873z"
+                                    fill="#2D527C" p-id="5749"></path>
+                                <path
+                                    d="M675.127363 982.420162c-10.513959 0-21.047918-2.48399-30.81788-7.48397l-336.620685-172.349327c-15.45194-7.913969-21.563916-26.853895-13.653947-42.305835 7.911969-15.45194 26.849895-21.563916 42.305835-13.653947l336.620685 172.349327c1.291995 0.665997 2.54599 1.109996 4.737982-0.235999 3.287987-2.007992 7.121972-7.385971 7.121972-15.933938V121.193527c0-8.549967-3.833985-13.927946-7.121972-15.933938-2.189991-1.339995-3.445987-0.901996-4.737982-0.235999L175.735314 359.606595c-15.45594 7.917969-34.391866 1.793993-42.305835-13.653946-7.911969-15.45194-1.797993-34.391866 13.653946-42.305835L644.313483 49.063808c21.125917-10.809958 45.873821-9.863961 66.185742 2.56199 22.94391 14.025945 37.191855 40.681841 37.191854 69.567729v781.608946c0 28.883887-14.247944 55.543783-37.191854 69.567729-10.921957 6.683974-23.13391 10.049961-35.371862 10.04996z"
+                                    fill="#2D527C" p-id="5750"></path>
+                                <path
+                                    d="M486.198101 165.335354v693.331292l172.441326 88.289655c27.177894 13.915946 57.617775-9.407963 57.617775-44.151828V121.193527c0-34.743864-30.437881-58.067773-57.617775-44.151828L486.198101 165.335354z"
+                                    fill="#CEE8FA" p-id="5751"></path>
+                                <path
+                                    d="M675.135363 982.474162c-10.677958 0-21.047918-2.53599-30.82388-7.53797l-172.441326-88.289655a31.435877 31.435877 0 0 1-17.109933-27.979891V165.331354a31.439877 31.439877 0 0 1 17.109933-27.979891l172.441326-88.289655c9.771962-5.00398 20.141921-7.537971 30.82388-7.53797 40.007844 0 72.555717 35.73986 72.555716 79.671689v781.606946c0 20.831919-7.203972 40.477842-20.28392 55.315784-13.643947 15.47794-32.695872 24.355905-52.271796 24.355905z m-157.505385-143.029441l155.335393 79.529689c0.833997 0.427998 1.539994 0.631998 2.167992 0.631998 1.489994 0 3.447987-1.169995 5.11198-3.057988 1.709993-1.939992 4.575982-6.305975 4.575982-13.745947V121.193527c0-10.871958-6.399975-16.803934-9.687962-16.803935-0.231999 0-0.935996 0-2.167992 0.631998l-155.335393 79.529689v654.893442z"
+                                    fill="#2D527C" p-id="5752"></path>
                             </svg>
                         </div>
                     </div>
-                    <div class="btn rightBtn" v-if="showArrow && (index + maxSlideCount < numOfphoto)"
-                        @click="rightScroll">
-                        <div class="btn_wrapper">
-                            <svg t="1694899453035" class="icon" viewBox="0 0 1024 1024" version="1.1"
-                                xmlns="http://www.w3.org/2000/svg" p-id="4236" width="62.5%" height="62.5%">
-                                <path d="M512 384V128h128l384 384-384 384H512v-256H0V384h512z" fill="#F04925"
-                                    p-id="4237"></path>
+                    <div class="right_desc">
+                        <div class="status_box">
+                            <div class="base">
+                                <svg t="1694890181354" class="icon-location" viewBox="0 0 1024 1024" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg" p-id="4742" width="200" height="200">
+                                    <path d="M512 512m-512 0a512 512 0 1 0 1024 0 512 512 0 1 0-1024 0Z" fill="#B3DFFF"
+                                        p-id="4743"></path>
+                                    <path
+                                        d="M777.076364 232.727273L145.221818 530.385455a9.774545 9.774545 0 0 0 2.327273 18.618181l276.945454 50.269091 50.269091 276.945455a9.774545 9.774545 0 0 0 18.618182 2.327273L791.272727 246.923636a9.774545 9.774545 0 0 0-14.196363-14.196363z"
+                                        fill="#439DFF" p-id="4744"></path>
+                                </svg>
+                                <div>Boston, MA</div>
+                            </div>
+                            <div class="status">Information Systems | NEU Graduate student | experienced developer</div>
+
+                        </div>
+                        <div class="about_box">
+                            <p><b>About me: </b> I am a self-motivated software engineer with nearly 2 years of working
+                                experience in full-stack
+                                software development, mostly proficient in Web development, enjoy working in a
+                                fast-paced
+                                and
+                                agile
+                                team, and love to collaborate with other teams cross-functionally.
+                            </p>
+                        </div>
+                        <div class="photo_box" @mouseover="showArrow=true" @mouseleave="showArrow=false"
+                            ref="photo_box">
+                            <div class="photo_box_inner" :style="{marginLeft:-slideDistance+'px'}">
+                                <div class="gallery">
+                                    <figure>
+                                        <a target="_blank" href="/assets/cargurus.jpg">
+                                            <img src="/assets/cargurus.jpg" alt="Cinque Terre" width="276" height="195">
+                                        </a>
+                                        <figcaption class="desc">First day at Cargurus</figcaption>
+                                    </figure>
+                                </div>
+                                <div class="gallery">
+                                    <figure>
+                                        <a target="_blank" href="/assets/g1.jpg">
+                                            <img src="/assets/g1.jpg" alt="Cinque Terre" width="276" height="195">
+                                        </a>
+                                        <figcaption class="desc">Group photo of all new SF student recruitment
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                                <div class="gallery">
+                                    <figure>
+                                        <a target="_blank" href="/assets/g2.jpg">
+                                            <img src="/assets/g2.jpg" alt="Cinque Terre" width="276" height="195">
+                                        </a>
+                                        <figcaption class="desc">Husky at NEU</figcaption>
+                                    </figure>
+                                </div>
+                                <div class="gallery">
+                                    <figure>
+                                        <a target="_blank" href="/assets/g3.jpg">
+                                            <img src="/assets/g3.jpg" alt="Cinque Terre" width="276" height="195">
+                                        </a>
+                                        <figcaption class="desc">Graduation photo with ZSTU classmates</figcaption>
+                                    </figure>
+                                </div>
+                                <div class="gallery">
+                                    <figure>
+                                        <a target="_blank" href="/assets/g4.jpg">
+                                            <img src="/assets/g4.jpg" alt="Cinque Terre" width="276" height="195">
+                                        </a>
+                                        <figcaption class="desc">Group photo from SF campus recruitment</figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="btn" v-if="showArrow && index > 0" @click="leftScroll">
+                                <div class="btn_wrapper">
+                                    <svg t="1694896788721" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" p-id="6335" width="62.5%" height="62.5%">
+                                        <path d="M512 640v256H384L0 512l384-384h128v256h512v256H512z" fill="#F04925"
+                                            p-id="6336"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="btn rightBtn" v-if="showArrow && (index + maxSlideCount < numOfphoto)"
+                                @click="rightScroll">
+                                <div class="btn_wrapper">
+                                    <svg t="1694899453035" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" p-id="4236" width="62.5%" height="62.5%">
+                                        <path d="M512 384V128h128l384 384-384 384H512v-256H0V384h512z" fill="#F04925"
+                                            p-id="4237"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="box" class="mobile_photo_box">
+                            <div class="wrapper">
+                                <div class="gallery mobile_gallery">
+                                    <figure>
+                                        <a target="_blank" href="/assets/cargurus.jpg">
+                                            <img src="/assets/cargurus.jpg" alt="Cinque Terre" width="276" height="195">
+                                        </a>
+                                        <figcaption class="desc">First day at Cargurus</figcaption>
+                                    </figure>
+                                </div>
+                                <div class="gallery mobile_gallery">
+                                    <figure>
+                                        <a target="_blank" href="/assets/g1.jpg">
+                                            <img src="/assets/g1.jpg" alt="Cinque Terre" width="276" height="195">
+                                        </a>
+                                        <figcaption class="desc">Group photo of all new SF student recruitment
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                                <div class="gallery mobile_gallery">
+                                    <figure>
+                                        <a target="_blank" href="/assets/g2.jpg">
+                                            <img src="/assets/g2.jpg" alt="Cinque Terre" width="276" height="195">
+                                        </a>
+                                        <figcaption class="desc">Husky at NEU</figcaption>
+                                    </figure>
+                                </div>
+                                <div class="gallery mobile_gallery">
+                                    <figure>
+                                        <a target="_blank" href="/assets/g3.jpg">
+                                            <img src="/assets/g3.jpg" alt="Cinque Terre" width="276" height="195">
+                                        </a>
+                                        <figcaption class="desc">Graduation photo with ZSTU classmates</figcaption>
+                                    </figure>
+                                </div>
+                                <div class="gallery mobile_gallery">
+                                    <figure>
+                                        <a target="_blank" href="/assets/g4.jpg">
+                                            <img src="/assets/g4.jpg" alt="Cinque Terre" width="276" height="195">
+                                        </a>
+                                        <figcaption class="desc">Group photo from SF campus recruitment</figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="education_box">
+                            <details>
+                                <summary><b>Education</b></summary>
+                                <div class="education">
+                                    <div class="school">
+                                        <img src="/assets/neu.jpg" />
+                                    </div>
+                                    <div class="school_info">
+                                        <div><b>Northeastern University</b></div>
+                                        <div>Master of Science - MS, Management Information Systems, General</div>
+                                        <div class="date">Jan 2022 - Dec 2023</div>
+                                        <div>Grade: 3.34</div>
+                                    </div>
+                                </div>
+                                <div class="education">
+                                    <div class="school">
+                                        <img src="/assets/zstu.jpg" />
+                                    </div>
+                                    <div class="school_info">
+                                        <div><b>Zhejiang Sci-Tech University</b></div>
+                                        <div>Bachelor's degree, Management Information Systems, General</div>
+                                        <div class="date">Aug 2016 - Jun 2020</div>
+                                        <div>Grade: 3.28</div>
+                                    </div>
+                                </div>
+                            </details>
+                        </div>
+                        <div class="education_box" id="work" ref="work">
+                            <p><b>Experience</b></p>
+                            <div class="education">
+                                <div class="school">
+                                    <img src="/assets/cargurus_company.jpg" />
+                                </div>
+                                <div class="school_info">
+                                    <div><b>Full Stack Developer</b></div>
+                                    <div>CarGurus · Internship</div>
+                                    <div class="date">Jan 2023 - Jun 2023 · 6 mos</div>
+                                    <div class="date">Cambridge, Massachusetts, United States · Hybrid</div>
+                                    <div>
+                                        <div :class="{'exp_content': true, 'exp_show_content': showFullWorkText[0]}">
+                                            1. Developed RESTful APIs and client classes to support C2D offer
+                                            evaluation, including checking offer eligibility, retrieving inventory
+                                            listings, and triggering email events within Iterable. Also, performed Unit
+                                            test with JUnit.
+                                            <br />
+                                            2. Contributed to frontend development for C2D2, including loading
+                                            animations, UI display changes in the preOffer form, data tracking
+                                            analytics, and enhancing landing page elements..
+                                            <br />
+                                            3. Optimized playwright automated E2E testing by implementing the
+                                            self-scheduler feature and effectively addressing other issues such as flaky
+                                            behavior and picture loading timeouts.
+                                            <div :class="{'virtual': true, 'noshow': showFullWorkText[0]}">
+                                                1. Developed RESTful APIs and client classes to support C2D offer
+                                                evaluation, including checking offer eligibility, retrieving inventory
+                                                listings, and triggering email events within Iterable. Also, performed
+                                                Unit
+                                                test with JUnit.
+                                                <br />
+                                                2. Contributed to frontend development for C2D2, including loading
+                                                animations, UI display changes in the preOffer form, data tracking
+                                                analytics, and enhancing landing page elements..
+                                                <br />
+                                                3. Optimized playwright automated E2E testing by implementing the
+                                                self-scheduler feature and effectively addressing other issues such as
+                                                flaky
+                                                behavior and picture loading timeouts.
+                                                <span class="more"><span class="light_btn" @click="seeMore(0)">…see
+                                                        more</span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="education">
+                                <div class="school">
+                                    <img src="/assets/sf.jpg" />
+                                </div>
+                                <div class="school_info">
+                                    <div><b>Frontend Web Developer</b></div>
+                                    <div>S.F. EXPRESS CO. LTD · Full-time</div>
+                                    <div class="date">Aug 2020 - Jun 2021 · 11 mos</div>
+                                    <div class="date">Shenzhen, Guangdong, China</div>
+                                    <div>
+                                        <div :class="{'exp_content': true, 'exp_show_content': showFullWorkText[1]}">
+                                            1. Worked in a fast-paced environment and developed new features for
+                                            multiple cross-functional agile teams (Campus Delivery team) every two
+                                            weeks. Released 7 major version updates and 15 minor version updates.
+                                            <br />
+                                            2. Designed and implemented UI(user interfaces)/UX with JavaScript and
+                                            React.js. Collaborated with team to propose interface optimization
+                                            solutions. Monthly delivery order volume increased by 23%.
+                                            <br />
+                                            3. Supported the medicine delivery team cross-functionally and created a web
+                                            application MVP for migrating 4 main features from other platforms.
+                                            <br />
+                                            4. Contributed to the IT infrastructure of the department(UI library) and
+                                            committed 3 reusable front-end components, such as the customized table,
+                                            signature pad, and output detailed written documentation, which saved 10+
+                                            hours of development per month.
+                                            <div :class="{'virtual': true, 'noshow': showFullWorkText[1]}">
+                                                1. Worked in a fast-paced environment and developed new features for
+                                                multiple cross-functional agile teams (Campus Delivery team) every two
+                                                weeks. Released 7 major version updates and 15 minor version updates.
+                                                2. Designed and implemented UI(user interfaces)/UX with JavaScript and
+                                                React.js. Collaborated with team to propose interface optimization
+                                                solutions. Monthly delivery order volume increased by 23%.
+                                                3. Supported the medicine delivery team cross-functionally and created a
+                                                web
+                                                application MVP for migrating 4 main features from other platforms.
+                                                4. Contributed to the IT infrastructure of the department(UI library)
+                                                and
+                                                committed 3 reusable front-end components, such as the customized table,
+                                                signature pad, and output detailed written documentation, which saved
+                                                10+
+                                                hours of development per month.
+                                                <span class="more"><span class="light_btn" @click="seeMore(1)">…see
+                                                        more</span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="education">
+                                <div class="school">
+                                    <img src="/assets/yc2.jpg" />
+                                </div>
+                                <div class="school_info">
+                                    <div><b>Full Stack Developer</b></div>
+                                    <div>YUANCHENG Technology development Co., ltd. · Internship</div>
+                                    <div class="date">Feb 2020 - Jun 2020 · 5 mos</div>
+                                    <div class="date">Hangzhou, Zhejiang, China · On-site</div>
+                                    <div>
+                                        <div :class="{'exp_content': true, 'exp_show_content': showFullWorkText[2]}">
+                                            1. Communicated with the data warehouse team to identify common problems for
+                                            products and revamped the data audit system with Vue.js, then integrated
+                                            some technical solutions, such as data validation, and file import. The
+                                            upgraded system helped to reduce the total rate of dirty data by 1.2%.
+                                            <br />
+                                            2. Visualized data reports and developed 6 data charts with echarts.js and
+                                            d3.js for the data analysis team.
+                                            <br />
+                                            3. Deployed micro-services and CI/CD pipelines with Jenkins + GitLab to
+                                            increase the scalability/reliability and deployment velocity of the
+                                            platform.
+                                            <br />
+                                            4. Participated actively in Scrum/code review meetings and made 2
+                                            presentations about the best practices of front-end tools.
+                                            <div :class="{'virtual': true, 'noshow': showFullWorkText[2]}">1.
+                                                Communicated with the data warehouse team to identify common problems
+                                                for products and revamped the data audit system with Vue.js, then
+                                                integrated some technical solutions, such as data validation, and file
+                                                import. The upgraded system helped to reduce the total rate of dirty
+                                                data by 1.2%.
+                                                2. Visualized data reports and developed 6 data charts with echarts.js
+                                                and d3.js for the data analysis team.
+                                                3. Deployed micro-services and CI/CD pipelines with Jenkins + GitLab to
+                                                increase the scalability/reliability and deployment velocity of the
+                                                platform.
+                                                4. Participated actively in Scrum/code review meetings and made 2
+                                                presentations about the best practices of front-end tools.
+                                                <span class="more"><span class="light_btn" @click="seeMore(2)">…see
+                                                        more</span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="education">
+                                <div class="school">
+                                    <img src="/assets/ft.jpg" />
+                                </div>
+                                <div class="school_info">
+                                    <div><b>Software Engineer</b></div>
+                                    <div>Fantuan 饭团 · Internship</div>
+                                    <div class="date">Jun 2019 - Aug 2019 · 3 mos</div>
+                                    <div class="date">China</div>
+                                    <div>
+                                        <div :class="{'exp_content': true, 'exp_show_content': showFullWorkText[3]}">
+                                            1. Developed 8 restful APIs for the User behavior analysis team with
+                                            SpringBoot + Redis and wrote Unit test cases with JUnit.<br />
+                                            2. Implemented continuous integration and deployed new applications with
+                                            Linux Operating Systems on AWS.<br />
+                                            3. Wrote automated tests with scripts and debugged systems to support
+                                            integration testing, using software version control GitHub to manage source
+                                            code.<br />
+                                            4. Assisted team members in troubleshooting and resolved data format
+                                            conflicts among different systems.
+                                            <div :class="{'virtual': true, 'noshow': showFullWorkText[3]}">
+                                                1. Developed 8 restful APIs for the User behavior analysis team with
+                                                SpringBoot + Redis and wrote Unit test cases with JUnit.
+                                                2. Implemented continuous integration and deployed new applications with
+                                                Linux Operating Systems on AWS.
+                                                3. Wrote automated tests with scripts and debugged systems to support
+                                                integration testing, using software version control GitHub to manage
+                                                source code.
+                                                4. Assisted team members in troubleshooting and resolved data format
+                                                conflicts among different systems.
+                                                <span class="more"><span class="light_btn" @click="seeMore(3)">…see
+                                                        more</span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <table>
+                            <tr>
+                                <td>LinkedIn</td>
+                                <td><a href="https://www.linkedin.com/in/kun-li-355638249/"
+                                        target="_blank">https://www.linkedin.com/in/kun-li-355638249/</a></td>
+                            </tr>
+                            <tr>
+                                <td>Github</td>
+                                <td><a href="https://github.com/likun945/INFO6150"
+                                        target="_blank">https://github.com/likun945/INFO6150</a></td>
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                                <td><a href="mailto:li.kun1@northeastern.edu"
+                                        target="_blank">li.kun1@northeastern.edu</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Tel</td>
+                                <td><a href="tel:+17819578803" target="_blank">Tel(+1)781-957-8803</a></td>
+                            </tr>
+                        </table>
+                        <div class="mobile_contact">
+                            <div>
+                                <div><b>LinkedIn</b></div>
+                                <div class="mobile_contact_info">https://www.linkedin.com/in/kun-li-355638249/</div>
+                            </div>
+                            <div>
+                                <div><b>Github</b></div>
+                                <div class="mobile_contact_info">https://github.com/likun945/INFO6150</div>
+                            </div>
+                            <div>
+                                <div><b>Email</b></div>
+                                <div class="mobile_contact_info">li.kun1@northeastern.edu</div>
+                            </div>
+                            <div>
+                                <div><b>Tel</b></div>
+                                <div class="mobile_contact_info">(+1)781-957-8803</div>
+                            </div>
+                        </div>
+                        <form id="form" v-if="!hasRating" @submit="submitForm">
+                            <div class="rate-content">
+                                <span style="margin-right: 8px"><b>Rate my website</b></span>
+                                <div class="rating">
+                                    <div>
+                                        <input type="radio" name="rate">
+                                        <label>Excellent</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" name="rate">
+                                        <label>Very Good</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" name="rate">
+                                        <label>Good</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" name="rate">
+                                        <label>Fair</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="margin-top:10px">
+                                <input type="submit" class="custom-button" value="Submit">
+                            </div>
+                        </form>
+                        <div v-else style="text-align: center;text-decoration: underline;margin-top: 20px;">Thank you for rating my website
+                            <svg t="1694991046149" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" p-id="7763" width="20" height="20">
+                                <path
+                                    d="M515.045871 99.997482c-231.363392 0-418.920068 187.5577-418.920068 418.923138 0 231.366462 187.556677 418.922115 418.920068 418.922115 231.367485 0 418.924161-187.555653 418.924161-418.922115C933.970032 287.555182 746.413356 99.997482 515.045871 99.997482zM892.574227 404.104641c1.25355 2.90619 3.086291 4.116761 5.820566 4.686742 4.864798 1.017166 9.685593 2.267647 14.519692 3.443425 1.041726 0.25378 2.058892 0.603751 3.088338 0.910743 0.203638 0.334621 0.409322 0.672312 0.613984 1.007957-0.925069 0.635473-1.937119 1.164522-2.75781 1.928932-3.741207 3.493567-7.353478 7.163143-11.17655 10.547217-1.939165 1.715061-2.608407 3.52836-2.308579 6.192026 0.567935 5.016247 0.849344 10.073426 1.218758 15.115256 0.075725 1.029446 0.008186 2.070148 0.008186 3.547803-1.285273-0.572028-2.302439-0.955768-3.26537-1.459235-4.458545-2.328022-8.975419-4.550643-13.32447-7.099698-2.38021-1.394766-4.443196-1.627057-6.985088-0.461511-4.554736 2.090615-9.255805 3.809769-13.902638 5.666046-1.031493 0.411369-2.082428 0.747014-3.687996 1.316995 0.230244-1.856277 0.341784-3.260254 0.587378-4.634554 0.819668-4.573155 1.576915-9.163707 2.570545-13.69286 0.593518-2.712785 0.1361-4.713348-1.744737-6.77531-4.067642-4.452405-7.867178-9.18622-12.059664-14.136975 1.812275-1.047866 3.533476-1.022283 5.1503-1.254573 4.793166-0.689708 9.591449-1.338485 14.397918-1.886977 1.99647-0.230244 3.355421-1.082658 4.483104-2.963495 3.27151-5.476735 6.743588-10.82044 10.55131-16.872273C887.346155 393.279085 890.189923 398.576741 892.574227 404.104641zM850.337263 518.869455c0 185.943946-150.736073 336.685135-336.680019 336.685135-185.948039 0-336.686159-150.741189-336.686159-336.685135 0-185.947016 150.73812-336.685135 336.686159-336.685135C699.60119 182.184319 850.337263 332.922439 850.337263 518.869455zM831.318094 315.821969c1.488911-5.219885 3.13541-10.386558 4.743024-15.565511 0.303922-0.960885 0.705058-1.886977 1.220804-3.251044 2.965541 3.368724 5.672186 6.452969 8.390088 9.524934 2.050706 2.318812 3.761674 5.476735 6.28003 6.685259 2.492774 1.197268 5.808286 0.479931 8.760524 0.493234 4.344958 0.021489 8.68787-0.056282 13.030781-0.082888 0.11768 0 0.23536 0.078795 0.663102 0.231267-0.318248 0.785899-0.533143 1.609661-0.947582 2.298346-2.816139 4.709255-5.602601 9.444093-8.55791 14.049994-1.243317 1.937119-1.551332 3.581572-0.669242 5.862521 2.040473 5.2864 3.774977 10.710946 5.615904 16.08535 0.193405 0.567935 0.281409 1.177825 0.539282 2.27481-5.228071-1.173732-10.169617-1.834788-14.821567-3.449565-5.136997-1.782599-9.199523-0.924045-13.265118 2.849908-3.363607 3.121084-7.265474 5.569856-10.937097 8.302083-0.186242 0.138146-0.461511 0.138146-1.151219 0.324388-0.234337-1.49812-0.551562-2.978844-0.675382-4.476965-0.387833-4.63967-0.727571-9.282411-1.031493-13.929244-0.157589-2.39249-0.889253-4.15667-3.009544-5.479805-4.285606-2.677992-8.388041-5.697769-12.55392-8.595772-1.006933-0.700965-1.970888-1.474584-3.397377-2.545986 2.178619-0.964978 3.865028-1.74269 5.571902-2.464121 4.27128-1.805112 8.520047-3.675716 12.843516-5.328355C829.789275 318.931796 830.756299 317.792856 831.318094 315.821969zM751.783667 256.04656c4.219091-3.285836 8.372691-6.685259 12.732999-9.739828 2.182712-1.52575 2.870374-3.402493 2.877537-5.984295 0.025583-5.328355 0.173962-10.656711 0.277316-15.987113 0.014326-0.653893 0.096191-1.307785 0.176009-2.402723 1.052982 0.503467 1.954515 0.809435 2.732228 1.327228 4.640694 3.087315 9.312086 6.135744 13.850449 9.385764 1.727341 1.235131 3.311419 1.384533 5.220908 0.811482 6.081509-1.828648 12.193717-3.555989 18.705014-5.440919-0.12382 1.107217-0.104377 1.964748-0.319272 2.745531-1.551332 5.478781-3.074012 10.966773-4.7727 16.391319-0.575098 1.841951-0.402159 3.193739 0.697895 4.747117 3.384074 4.770653 6.625908 9.653871 9.911744 14.502295 0.347924 0.5137 0.595564 1.101077 1.430582 2.65855-5.2864 0-9.742898-0.00614-14.19428 0.004093-1.493004 0.004093-2.981914 0.119727-4.468778 0.069585-2.937912-0.100284-5.095042 1.052982-6.927783 3.671623-2.828418 4.041036-6.018064 7.789407-9.069563 11.650341-0.629333 0.795109-1.321088 1.528819-2.334161 2.690272-0.943488-2.532683-1.763157-4.692882-2.556219-6.863315-1.404999-3.841491-2.923586-7.643074-4.14746-11.55108-0.679475-2.160199-1.916653-3.173273-3.833305-3.820002-5.204535-1.765203-10.367115-3.675716-15.542998-5.542226-0.809435-0.293689-1.597381-0.659009-2.765997-1.14508C750.397087 257.342066 751.043816 256.624728 751.783667 256.04656zM675.163615 203.644073c3.120061-4.137227 6.200212-8.321526 9.437953-12.351306 1.434675-1.785669 1.886977-3.40454 1.24127-5.768377-1.39886-5.101181-2.462075-10.30674-3.643993-15.47546-0.199545-0.87595-0.289596-1.780553-0.50142-3.112897 1.197268 0.282433 2.118244 0.425695 2.996241 0.720408 5.202489 1.752924 10.425444 3.446495 15.575744 5.364171 1.940189 0.723477 3.507894 0.573051 5.260817-0.535189 4.38282-2.769067 8.849552-5.374404 13.294794-8.030907 1.063215-0.638543 2.160199-1.218758 3.858888-2.171456 0 2.101871 0.029676 3.735068-0.00614 5.368264-0.115634 4.79112-0.169869 9.587356-0.423649 14.369266-0.109494 2.090615 0.50756 3.474125 2.046612 4.746094 4.418636 3.657296 8.735965 7.458879 13.087063 11.211343 0.471744 0.406253 0.907673 0.861624 1.696642 1.613754-1.092891 0.490164-1.898233 0.953721-2.753717 1.218758-5.242398 1.619894-10.467399 3.301186-15.751752 4.735861-2.12643 0.575098-3.421936 1.650593-4.275373 3.845585-1.816369 4.665253-3.855818 9.230222-5.820566 13.826913-0.50756 1.184989-1.075495 2.340301-1.805112 3.917216-0.830925-1.019213-1.482771-1.728364-2.038426-2.514263-3.223415-4.560876-6.461155-9.111518-9.614985-13.730723-0.943488-1.38351-1.937119-2.112104-3.635807-2.222621-5.932106-0.384763-11.851932-0.99977-17.779945-1.528819-0.685615-0.061398-1.375324-0.143263-2.602268-0.273223C673.922345 205.491141 674.498466 204.527187 675.163615 203.644073zM592.191902 136.154983c3.843538 0.180102 7.693216 0.404206 11.512195 0.847298 1.928932 0.223081 3.27151-0.345877 4.619204-1.798972 3.858888-4.151553 7.838525-8.16803 11.774161-12.233626 0.530073-0.544399 1.085728-1.058099 2.192945-2.13257 1.556449 6.185886 3.199878 11.626805 4.241604 17.196661 0.691755 3.690042 2.323928 5.690606 5.562692 7.0383 5.2864 2.206248 10.382465 4.933359 16.054651 7.679913-1.149173 0.87902-1.858324 1.51347-2.644223 2.004657-4.716418 2.951215-9.411347 5.948479-14.204513 8.756431-1.710968 1.001817-2.499937 2.269693-2.753717 4.312212-0.797156 6.330172-1.750877 12.637832-2.706645 19.417235-1.057075-0.692778-1.889023-1.131777-2.610454-1.727341-4.325515-3.583618-8.664334-7.14677-12.900821-10.842952-1.476631-1.289366-2.862187-1.665942-4.764514-1.280156-5.606695 1.137916-11.252275 2.033309-16.886599 3.00545-0.830925 0.143263-1.683339 0.182149-2.996241 0.320295 1.826602-4.499477 3.521197-8.606005 5.160533-12.739139 1.063215-2.686179 2.937912-5.457292 2.814092-8.102538-0.121773-2.63706-2.236947-5.194302-3.558036-7.737218-2.042519-3.919263-4.151553-7.795547-6.399757-12.008498C586.865593 136.131447 589.531306 136.03014 592.191902 136.154983zM491.742119 128.847553c3.174296-0.61296 6.381337-1.060145 9.519818-1.831718 1.081635-0.265036 2.376117-1.037632 2.935865-2.004657 3.405563-5.877871 6.630001-11.877515 9.895371-17.847483 0.107447-0.196475 0.021489-0.512676 0.025583-0.773619 0.249687-0.001023 0.497327-0.001023 0.747014-0.001023 0.811482 1.755993 1.541099 3.564175 2.451842 5.257747 2.236947 4.151553 4.628414 8.205892 6.80294 12.391215 0.99977 1.918699 2.266623 2.865257 4.315282 3.200902 5.638417 0.924045 11.242042 2.080382 16.856923 3.163039 0.701988 0.135076 1.38351 0.379647 2.499937 0.690732-0.981351 1.192152-1.641383 2.085498-2.388397 2.8847-3.342118 3.573385-6.569626 7.290033-10.113335 10.615779-2.378164 2.231831-2.824325 4.595668-2.278903 7.748475 0.811482 4.708232 1.299599 9.482979 1.87265 14.237259 0.119727 1.019213 0.016373 2.070148 0.016373 3.533476-2.856048-1.300622-5.466502-2.471284-8.06263-3.671623-3.304256-1.526773-6.635117-2.990101-9.878998-4.656043-1.717108-0.883113-3.181459-0.868787-4.92108-0.013303-5.070482 2.495844-10.218736 4.818749-15.3455 7.187703-0.779759 0.360204-1.606591 0.599657-2.904143 1.076518 0.429789-3.773953 0.795109-7.16826 1.209548-10.55438 0.356111-2.905166 0.717338-5.810333 1.167592-8.699126 0.331551-2.133593-0.121773-3.759627-1.683339-5.308913-3.6399-3.619434-7.106862-7.440459-10.627035-11.19804-0.837064-0.895393-1.606591-1.863441-2.824325-3.28379C484.998531 130.196271 488.366232 129.500423 491.742119 128.847553zM384.081097 151.168931c4.2897-2.094708 8.526187-4.359284 12.922311-6.164397 3.075035-1.261737 4.737908-3.174296 5.393847-6.713912 0.916882-4.951779 2.360767-9.79304 3.597945-14.675234 0.186242-0.733711 0.476861-1.436722 0.89744-2.682086 1.880837 1.928932 3.467985 3.551896 5.046946 5.179976 1.701758 1.753947 3.40147 3.508917 5.095042 5.273097 5.63944 5.880941 5.637394 5.878894 13.580297 5.306866 4.456498-0.321318 8.91402-0.633427 13.371542-0.929162 0.221034-0.014326 0.454348 0.166799 0.985444 0.3776-0.3776 0.925069-0.676405 1.87879-1.1328 2.735297-2.579755 4.860704-5.15337 9.730619-7.833409 14.526855-0.926092 1.657756-0.976234 3.075035-0.225127 4.843308 2.518357 5.92699 4.888334 11.92561 7.576559 18.543332-2.607384-0.38988-4.726651-0.666172-6.832615-1.027399-4.411473-0.7552-8.838296-1.429559-13.20986-2.393513-1.936095-0.426719-3.285836 0.11768-4.738931 1.379417-4.053316 3.51915-8.196683 6.91755-12.320607 10.342556-0.853437 0.709151-1.77646 1.323135-3.067872 2.275833-0.830925-5.812379-1.595334-11.162224-2.353604-16.512069-0.074701-0.527003-0.151449-1.057075-0.172939-1.587148-0.127913-3.035126-1.358951-5.031597-4.02978-6.462179-4.323469-2.314719-8.429996-5.100158-12.616342-7.706519-0.938372-0.584308-1.832741-1.252527-3.119037-2.137687C382.181841 152.23317 383.107933 151.644769 384.081097 151.168931zM292.524868 197.182918c3.767813-3.25616 7.462972-6.618744 11.362792-9.683547 2.121314-1.665942 3.069919-3.494591 2.87242-6.340405-0.305969-4.376681-0.319272-8.775874-0.429789-13.165858-0.042979-1.692548-0.008186-3.38305-0.008186-5.52176 1.335415 0.669242 2.335185 1.096984 3.269463 1.651616 4.122901 2.446725 8.308223 4.793166 12.313443 7.445576 2.727111 1.806135 5.222955 2.325975 8.339946 1.011027 4.488221-1.892093 9.165754-3.26844 13.768585-4.843308 0.920976-0.315178 1.867534-0.538259 3.181459-0.912789-0.169869 1.322112-0.220011 2.337231-0.440022 3.307326-1.168616 5.170766-2.27174 10.363022-3.626597 15.47853-0.574075 2.168386-0.316202 3.722788 1.071402 5.440919 3.325745 4.124947 6.468318 8.420787 9.67229 12.659321 0.61603 0.812505 1.172709 1.677199 2.026146 2.90619-1.091868 0.222057-1.842974 0.446162-2.607384 0.515746-5.921873 0.548492-11.842723 1.163499-17.775852 1.535983-1.729387 0.10847-2.664689 0.934279-3.601015 2.290159-3.685949 5.333472-7.443529 10.609639-11.443633 16.284895-0.689708-1.358951-1.255597-2.338255-1.700735-3.37691-2.025123-4.712325-4.120854-9.395998-5.977132-14.184047-0.892323-2.303462-2.170432-3.549849-4.462638-4.158716-5.16872-1.375324-10.265808-3.052522-15.388479-4.626367-0.933255-0.287549-1.836835-0.671289-3.137457-1.151219C290.892695 198.716854 291.681664 197.911512 292.524868 197.182918zM215.906863 265.25427c2.915399-4.313236 5.771447-8.676613 8.828063-12.873192 1.38351-1.89721 1.560542-3.605108 0.849344-5.833869-1.645476-5.16258-3.078105-10.402931-4.583388-15.615653-0.212848-0.73678-0.349971-1.49812-0.63138-2.719948 1.463328 0.313132 2.626827 0.49221 3.75758 0.815575 5.152347 1.468444 10.31288 2.913353 15.433504 4.502547 1.822508 0.563842 3.279696 0.312108 4.870938-0.814552 4.244674-3.006474 8.594749-5.846148 12.909008-8.741082 1.043772-0.699941 2.109034-1.356904 3.50994-2.254344 0.198521 1.167592 0.444115 1.995447 0.465604 2.830465 0.138146 5.194302 0.327458 10.390651 0.285502 15.58393-0.021489 2.789533 0.792039 4.706185 3.038196 6.290263 4.145413 2.923586 8.098445 6.163373 12.117992 9.29162 0.88516 0.687662 1.718131 1.451048 2.983961 2.529613-2.182712 0.805342-3.9121 1.455141-5.650697 2.082428-4.234441 1.527796-8.444323 3.136433-12.717649 4.526083-2.074242 0.674359-3.323699 1.814322-4.070712 4.080945-1.692548 5.14416-3.651157 10.187013-5.51869 15.265682-0.312108 0.853437-0.695848 1.676176-1.186012 2.851954-0.912789-1.051959-1.684362-1.87879-2.38635-2.768043-3.287883-4.168949-6.608511-8.31027-9.80532-12.559037-1.188058-1.579985-2.52552-2.38942-4.412496-2.434445-5.334495-0.12689-10.66899-0.338714-16.001439-0.525979-1.191128-0.041956-2.38021-0.11768-4.055362-0.202615C214.75769 267.177062 215.282646 266.176268 215.906863 265.25427zM157.022755 313.623907c5.833869 0.041956 11.670807 0.021489 17.502629 0.215918 1.813299 0.062422 3.003404-0.599657 4.16588-1.979074 3.25309-3.850701 6.620791-7.586792 9.911744-11.399631 0.916882-1.063215 1.728364-2.231831 2.965541-3.842515 0.677429 1.834788 1.107217 2.866281 1.440815 3.934612 1.459235 4.671393 3.044336 9.309016 4.27128 14.051017 0.735757 2.837628 2.046612 4.504594 4.703115 5.466502 4.695952 1.702782 9.272177 3.795443 13.886265 5.745864 1.019213 0.430812 2.00261 0.954745 3.467985 1.658779-1.302669 0.994654-2.238994 1.762133-3.223415 2.448772-3.957125 2.755764-7.838525 5.655813-11.927657 8.16496-2.556219 1.568728-3.65218 3.560082-3.753487 6.671956-0.147356 4.517897-0.61603 9.023514-0.995677 13.531178-0.11154 1.311879-0.393973 2.608407-0.652869 4.269233-0.917906-0.49528-1.680269-0.794086-2.324952-1.27504-4.285606-3.185552-8.599865-6.334265-12.791327-9.657964-2.036379-1.612731-3.929496-2.174526-6.513344-1.475608-5.976108 1.616824-12.048407 2.814092-18.838044 4.353145 2.311649-6.67298 4.233418-12.56927 6.418176-18.351973 0.844228-2.232854 0.695848-3.886517-0.576121-5.869684-3.359514-5.238304-6.507204-10.633175-10.041704-16.467043C155.4397 313.723168 156.230716 313.617767 157.022755 313.623907zM129.931746 408.977625c3.427052-0.62831 5.420453-2.295276 6.864338-5.633301 2.284019-5.279237 4.989641-10.346649 7.786337-16.054651 1.333368 2.059915 2.38021 3.6399 3.391237 5.244444 2.360767 3.751441 4.833075 7.429203 7.003508 11.302417 1.235131 2.202155 2.843768 3.054569 5.099135 3.301186 4.808516 0.522909 9.602705 1.206478 14.398942 1.855254 1.442862 0.194428 2.876514 0.493234 4.739954 0.819668-0.870834 1.193175-1.413186 2.038426-2.048659 2.793626-3.322675 3.955078-6.54609 8.018627-10.053983 11.778254-1.919722 2.058892-2.284019 4.091178-1.698688 6.789637 1.011027 4.663206 1.790786 9.383718 2.629897 14.08888 0.204661 1.147126 0.272199 2.322905 0.451278 3.927449-1.195222-0.316202-2.119267-0.459464-2.976798-0.799202-5.117554-2.023076-10.250458-4.01136-15.312754-6.185886-1.880837-0.807389-3.444449-0.807389-5.26798 0.222057-4.497431 2.539846-9.095145 4.875031-13.661138 7.272637-1.090844 0.575098-2.216481 1.081635-4.097318 1.992377 0.394996-5.573949 0.677429-10.468422 1.105171-15.35164 0.621147-7.106862 0.662079-7.099698-4.284583-11.806907-3.062755-2.915399-6.124488-5.828752-9.16473-8.772804-0.699941-0.677429-1.306762-1.466398-2.288113-2.578732C118.644679 411.673014 124.241141 410.024467 129.931746 408.977625zM98.400612 520.185426c1.805112-1.023306 3.187599-1.826602 4.586458-2.598174 4.193509-2.314719 8.350179-4.716418 12.610202-6.877641 1.87265-0.951675 2.831488-2.238994 3.208065-4.411473 0.976234-5.628184 2.125407-11.224646 3.219321-16.830317 0.119727-0.61603 0.320295-1.211595 0.587378-2.194992 1.023306 0.797156 1.822508 1.333368 2.529613 1.983167 4.146437 3.818979 8.314363 7.612375 12.378935 11.528568 1.331321 1.283226 2.638083 1.639337 4.380774 1.37737 4.91494-0.741897 9.850345-1.319042 14.781658-1.920746 1.549286-0.188288 3.111874-0.25378 5.179976-0.413416-0.666172 1.656733-1.045819 2.746554-1.529843 3.777023-2.173502 4.644787-4.294816 9.317203-6.609535 13.878079-0.991584 1.952468-1.083681 3.53143-0.052189 5.536087 2.336208 4.546549 4.429893 9.237385 6.605442 13.879102 0.543376 1.159406 1.022283 2.352581 1.755993 4.051269-5.815449-0.704035-11.133571-1.065262-16.346293-2.067079-4.372587-0.839111-7.779174-0.090051-10.996448 3.483334-3.517103 3.900843-7.611352 7.196912-11.789511 11.070126-0.405229-1.165546-0.775666-1.926886-0.938372-2.734274-1.01819-5.078669-2.083451-10.147104-2.946099-15.256472-0.472767-2.807952-1.459235-4.714372-4.112668-5.965875-4.762467-2.246157-9.31618-5.010107-13.944594-7.580652C100.2354 521.498328 99.571275 520.975419 98.400612 520.185426zM143.038252 650.246621c-2.443655-4.944616-4.932336-9.865695-7.234775-14.883989-0.861624-1.87879-2.042519-2.78237-3.900843-3.201925-5.584182-1.260713-11.141758-2.667759-16.70445-4.03899-0.701988-0.176009-1.37737-0.465604-2.784416-0.947582 4.811586-4.592598 8.972349-8.773827 13.359262-12.661368 2.340301-2.070148 3.28379-4.199649 2.807952-7.532557-0.695848-4.860704-0.865717-9.81146-1.233084-14.7264-0.066515-0.907673-0.008186-1.824555-0.008186-3.191692 1.421372 0.653893 2.550079 1.111311 3.631714 1.679245 4.573155 2.39863 9.205663 4.680603 13.663184 7.30743 2.095731 1.235131 3.840468 1.191128 5.955642 0.261966 4.706185-2.067079 9.495258-3.917216 14.257725-5.842055 1.029446-0.417509 2.080382-0.773619 3.759627-1.39272-0.246617 1.849114-0.376577 3.219321-0.618077 4.571109-0.86367 4.839215-1.708921 9.685593-2.676969 14.504342-0.458441 2.27481-0.049119 3.985778 1.51961 5.734608 4.119831 4.590552 8.039093 9.389858 12.371772 14.500249-1.169639 0.411369-1.886977 0.799202-2.64013 0.909719-5.780657 0.835018-11.56029 1.719154-17.36039 2.362814-1.834788 0.203638-2.888793 1.063215-3.843538 2.614547-3.413749 5.548366-6.916527 11.034311-10.597359 16.882506C144.048255 651.959635 143.479297 651.139967 143.038252 650.246621zM197.607078 724.985836c-1.466398 5.220908-3.13234 10.377348-4.732791 15.553231-0.271176 0.873903-0.6191 1.719154-1.113357 3.071965-2.830465-3.185552-5.462408-6.131651-8.079002-9.096169-1.792832-2.030239-3.631714-4.019547-5.315052-6.152117-1.074472-1.356904-2.28095-1.732457-3.891633-1.710968-6.567579 0.090051-13.138228 0.037862-19.965727 0.037862 0.325411-0.717338 0.645706-1.639337 1.1328-2.446725 2.830465-4.699022 5.630231-9.417487 8.590656-14.018272 1.180895-1.836835 1.37737-3.419889 0.575098-5.51869-1.880837-4.924149-3.51915-9.953699-5.234211-14.945387-0.329505-0.957815-0.561795-1.952468-0.960885-3.369747 1.418302 0.228197 2.494821 0.339738 3.543709 0.577145 5.092995 1.155313 10.200316 2.246157 15.255449 3.567245 2.221598 0.579191 3.959172 0.295735 5.835915-1.220804 4.259-3.441379 8.696056-6.631024 13.07376-9.905604 0.688685-0.511653 1.449002-0.915859 2.607384-1.63729 0.531096 6.076392 1.216711 11.730159 1.449002 17.404392 0.146333 3.543709 1.239224 5.879917 4.223185 7.634888 3.906983 2.298346 7.553023 5.108345 11.30037 7.718799 1.014096 0.705058 1.987261 1.480724 3.415796 2.552126-1.214664 0.618077-2.025123 1.090844-2.877537 1.453095-5.074575 2.15099-10.127661 4.365424-15.252379 6.363941C199.240275 721.662137 198.200596 722.867592 197.607078 724.985836zM277.181415 784.572956c-4.013407 3.133364-7.952112 6.40385-12.122085 9.281387-2.623757 1.812275-3.544733 4.03285-3.479241 7.278777 0.102331 5.056156-0.144286 10.125615-0.257873 15.185864-0.014326 0.639566-0.10847 1.277086-0.199545 2.292206-0.967024-0.417509-1.77032-0.63138-2.444679-1.077541-4.435009-2.937912-8.927323-5.796006-13.225209-8.951883-2.364861-1.734504-4.5312-2.060939-7.258311-1.136893-4.843308 1.641383-9.79611 2.914376-14.71412 4.300956-0.905626 0.25378-1.857301 0.319272-3.242857 0.549515 1.700735-5.913687 3.065825-11.422144 4.895497-16.744359 1.150196-3.347235 0.861624-5.863545-1.279133-8.670473-3.436262-4.504594-6.473435-9.363252-10.07445-14.649652 4.347005-0.279363 8.096399-0.574075 11.851932-0.747014 2.604314-0.119727 5.215792-0.159636 7.821129-0.081864 2.160199 0.063445 3.687996-0.771573 5.054109-2.62785 3.155876-4.28356 6.507204-8.398274 9.797134-12.567223 0.62831-0.795109 1.331321-1.524726 2.340301-2.673899 0.722454 1.880837 1.329275 3.405563 1.893116 4.946662 1.546216 4.212952 3.187599 8.388041 4.562922 12.667507 0.797156 2.484587 2.025123 3.941775 4.472871 4.694929 4.881171 1.503237 9.658987 3.38919 14.475689 5.130857 1.030469 0.369414 2.048659 0.783853 3.495614 1.339508C278.569018 783.251867 277.927405 783.989671 277.181415 784.572956zM352.086405 839.258439c-2.505054 3.305279-4.931313 6.689353-7.559163 9.883091-1.538029 1.870604-2.064009 3.581572-1.344624 6.119371 1.400906 4.963035 2.411933 10.050913 3.554966 15.09786 0.225127 0.989537 0.312108 2.01489 0.543376 3.563152-2.155083-0.693802-3.89368-1.220804-5.611811-1.811252-4.252861-1.459235-8.523117-2.870374-12.738116-4.453429-2.01182-0.7552-3.698229-0.679475-5.593392 0.543376-4.358261 2.812045-8.848529 5.386684-13.298887 8.037047-1.054005 0.62524-2.15099 1.172709-3.724835 2.028193 0-2.170432-0.034792-3.835352 0.00614-5.500271 0.112564-4.527107 0.149403-9.060353 0.430812-13.577227 0.156566-2.520403-0.547469-4.197602-2.483564-5.722328-3.89982-3.071965-7.599072-6.431479-11.363815-9.699919-0.927115-0.801249-1.782599-1.696642-3.171226-3.03001 3.176342-0.979304 5.734608-1.780553 8.299013-2.558265 3.461845-1.050935 6.90527-2.176572 10.396791-3.088338 2.099824-0.545422 3.403516-1.650593 4.259-3.858888 1.856277-4.793166 3.970428-9.471722 5.993504-14.18814 0.454348-1.057075 0.970094-2.086521 1.757017-3.771907 3.90596 5.571902 7.531534 10.476609 10.856255 15.60542 1.51347 2.336208 3.26844 3.208065 5.825682 3.340071 5.566786 0.293689 11.121292 0.87902 16.679891 1.360997 0.565888 0.048095 1.124614 0.205685 2.248204 0.421602C354.535177 836.008418 353.315396 837.637522 352.086405 839.258439zM442.05344 904.83804c-5.567809-0.409322-11.143805-0.771573-16.699334-1.329275-1.925862-0.193405-3.270487 0.404206-4.609994 1.842974-3.773953 4.047176-7.66354 7.972579-11.523451 11.927657-0.688685 0.705058-1.452071 1.327228-2.544963 2.316765-0.657986-2.545986-1.222851-4.688789-1.763157-6.839779-0.998747-3.985778-2.110057-7.944949-2.922563-11.973706-0.474814-2.356674-1.648546-3.597945-3.64911-4.497431-4.689812-2.109034-9.30083-4.411473-13.934361-6.661723-1.084705-0.525979-2.12643-1.153266-3.621481-1.970888 1.851161-1.205455 3.296069-2.184759 4.771677-3.103688 4.076852-2.536776 8.130168-5.126764 12.272511-7.538697 1.582031-0.923022 2.349511-2.116197 2.579755-3.997034 0.579191-4.753257 1.274016-9.487072 1.941212-14.223956 0.237407-1.688455 0.533143-3.371794 0.87902-5.552459 1.312902 0.98749 2.320858 1.684362 3.264347 2.470261 3.826142 3.181459 7.713682 6.28617 11.411911 9.631358 1.982144 1.790786 3.910053 2.352581 6.462179 1.782599 4.974291-1.107217 10.008958-1.910513 15.027252-2.793626 1.068332-0.188288 2.167363-0.180102 3.777023-0.301875-0.607844 1.620917-1.023306 2.820232-1.500167 3.990894-1.837858 4.51278-3.545756 9.098215-5.598508 13.496385-1.160429 2.484587-0.867764 4.40124 0.431835 6.643304 2.488681 4.294816 4.755304 8.735965 7.091512 13.131065 0.535189 1.013073 0.982374 2.082428 1.671059 3.560082C443.918927 904.84725 442.981578 904.907625 442.05344 904.83804zM531.051403 912.962068c-0.36532 0.071631-0.73985 0.125867-1.109264 0.148379-3.078105 0.205685-5.110391 1.681292-6.588045 4.793166-2.581802 5.439896-5.634324 10.624988-8.490372 15.917528-0.24764-0.002047-0.49528-0.002047-0.74599-0.002047-3.298116-6.095835-6.625908-12.173251-9.869788-18.299785-0.713244-1.344624-1.752924-1.698688-3.019777-1.935072-5.258771-0.973164-10.509355-1.990331-15.754822-3.01773-1.306762-0.25378-2.594081-0.607844-4.338818-1.019213 1.094938-1.299599 1.862417-2.292206 2.711761-3.199878 3.433192-3.665483 6.795776-7.421017 10.384511-10.900258 1.805112-1.746784 2.26253-3.558036 1.89721-5.999644-0.713244-4.732791-1.272993-9.491165-1.864464-14.246469-0.176009-1.415232-0.245593-2.841721-0.411369-4.860704 4.349051 2.026146 8.18645 3.841491 12.04943 5.602601 2.849908 1.299599 5.732561 3.507894 8.597819 3.507894 2.868327-0.002047 5.747911-2.214435 8.597819-3.518127 3.857864-1.763157 7.695263-3.581572 12.135388-5.655813-0.488117 4.200672-0.876973 7.737218-1.308809 11.264555-0.337691 2.77623-0.677429 5.550413-1.105171 8.31027-0.333598 2.130524 0.113587 3.759627 1.679245 5.308913 3.647063 3.613294 7.121188 7.435343 10.642384 11.193947 0.849344 0.905626 1.616824 1.898233 2.795673 3.300162C541.951661 910.825404 536.501532 911.896806 531.051403 912.962068zM641.544937 891.084805c-3.499707 1.704828-6.947226 3.565199-10.543124 5.009084-2.520403 1.00898-3.617387 2.765997-4.202719 5.434779-1.136893 5.178953-2.50403 10.3006-3.791349 15.443737-0.186242 0.73985-0.451278 1.453095-0.855484 2.724041-1.260713-1.277086-2.224668-2.238994-3.174296-3.216251-3.489474-3.595898-7.03523-7.137561-10.44284-10.82658-1.511423-1.635243-3.01773-2.364861-5.240351-2.118244-5.554506 0.60989-11.132548 0.925069-16.70445 1.341554-0.811482 0.060375-1.633197 0.008186-2.933819 0.008186 0.779759-1.614777 1.300622-2.78237 1.898233-3.90289 2.338255-4.3951 4.577249-8.857738 7.108908-13.122879 1.306762-2.204202 1.255597-4.030803 0.257873-6.293333-2.074242-4.690836-3.933589-9.486048-5.860475-14.252609-0.379647-0.937348-0.653893-1.924839-1.182942-3.51915 4.738931 0.801249 8.983605 1.520633 13.229303 2.24411 1.224898 0.207731 2.501984 0.257873 3.659343 0.681522 3.813862 1.396813 6.839779 0.349971 9.783831-2.570545 3.084245-3.065825 6.585999-5.653767 9.920954-8.425903 0.951675-0.791016 1.964748-1.503237 3.323699-2.536776 0.835018 5.881964 1.600451 11.246135 2.364861 16.612353 0.12996 0.920976 0.321318 1.840928 0.369414 2.768043 0.119727 2.182712 1.046842 3.560082 2.916423 4.626367 4.487198 2.568499 8.842389 5.393847 13.239536 8.138354 1.048889 0.653893 2.056845 1.381463 3.575432 2.408863C645.715933 889.008516 643.637598 890.067638 641.544937 891.084805zM737.239416 842.720284c-4.239558 3.705392-8.454556 7.440459-12.793374 11.002588-1.658779 1.360997-2.25025 2.843768-2.202155 5.060249 0.1361 6.249331 0.046049 12.505825 0.046049 19.453051-2.539846-1.520633-4.89652-2.933819-7.249101-4.344958-3.145643-1.88493-6.361895-3.647063-9.4093-5.693676-1.880837-1.264806-3.579525-1.258667-5.596462-0.528026-5.871731 2.12643-11.791557 4.089132-18.175965 6.282077 0.11154-1.329275 0.081864-2.320858 0.295735-3.247974 1.031493-4.52506 1.928932-9.105379 3.26537-13.531178 1.109264-3.673669 0.695848-6.471388-1.886977-9.349949-3.174296-3.545756-5.892197-7.565303-8.78406-11.396561-0.51984-0.687662-0.943488-1.459235-1.629103-2.530636 2.455935-0.301875 4.50664-0.618077 6.569626-0.797156 4.449335-0.387833 8.899694-0.817622 13.361309-1.001817 1.822508-0.077771 2.952238-0.825808 3.986801-2.346441 3.143597-4.630461 6.395664-9.184173 9.613962-13.756305 0.51984-0.737804 1.092891-1.427512 1.862417-2.426259 0.597611 1.085728 1.147126 1.918699 1.539053 2.828418 2.13257 4.960988 4.307096 9.903557 6.293333 14.934131 0.799202 2.028193 1.908466 3.13234 3.944845 3.691065 6.123464 1.684362 12.18553 3.613294 18.683525 5.569856C738.272955 841.464687 737.837026 842.198397 737.239416 842.720284zM805.32714 786.612405c-2.186805 2.870374-2.830465 5.414313-1.472538 9.002025 1.719154 4.546549 2.805906 9.371438 4.149507 14.080693 0.205685 0.719384 0.335644 1.463328 0.593518 2.608407-1.291412-0.230244-2.240017-0.316202-3.149736-0.572028-5.39794-1.514493-10.810207-2.981914-16.167215-4.663206-1.728364-0.539282-3.055592-0.297782-4.516874 0.715291-4.376681 3.038196-8.813736 5.978155-13.237489 8.93551-1.019213 0.683569-2.084475 1.289366-3.518127 2.170432-0.153496-1.465374-0.327458-2.451842-0.349971-3.445472-0.11768-5.060249-0.245593-10.123568-0.270153-15.185864-0.014326-2.583848-0.751107-4.462638-2.90619-5.978155-4.149507-2.918469-8.098445-6.160303-12.117992-9.287527-0.88516-0.687662-1.723248-1.440815-2.952238-2.478448 1.187035-0.553609 2.004657-1.013073 2.874467-1.327228 5.046946-1.830695 10.075473-3.741207 15.181771-5.382591 2.238994-0.719384 3.518127-1.952468 4.315282-4.340865 1.966795-5.879917 4.189416-11.661597 6.445806-17.865903 0.909719 0.945535 1.6465 1.593288 2.254344 2.354628 3.296069 4.160763 6.671956 8.256034 9.784854 12.567223 1.539053 2.128477 3.296069 2.88163 5.695722 2.910283 5.460362 0.062422 10.914584 0.325411 16.370853 0.521886 0.725524 0.025583 1.451048 0.125867 2.88777 0.25378C811.655266 777.453814 808.687678 782.205025 805.32714 786.612405zM856.23867 726.672244c-2.793626-0.100284-4.879124 0.471744-6.760984 2.927679-2.916423 3.793396-6.227842 7.234775-9.356089 10.842952-0.832971 0.959861-1.606591 1.983167-2.788509 3.439332-0.669242-1.880837-1.12973-3.042289-1.50119-4.237511-1.407046-4.541433-2.933819-9.052167-4.124947-13.661138-0.733711-2.828418-2.038426-4.487198-4.711302-5.450129-4.812609-1.732457-9.489118-3.90289-14.219863-5.9055-0.8913-0.3776-1.759063-0.819668-3.013637-1.409093 1.01512-0.859577 1.715061-1.545192 2.49789-2.094708 4.261047-2.977821 8.456602-6.081509 12.854772-8.809643 2.478448-1.539053 3.300162-3.605108 3.439332-6.456039 0.220011-4.51278 0.623193-9.017374 1.001817-13.520945 0.11154-1.314948 0.393973-2.614547 0.655939-4.275373 0.855484 0.455371 1.604544 0.74599 2.234901 1.215688 4.588505 3.40761 9.197476 6.795776 13.70821 10.32516 1.534959 1.197268 2.944052 1.520633 4.804423 1.044796 5.300726-1.356904 10.648524-2.51631 15.985066-3.719718 1.039679-0.234337 2.112104-0.316202 3.621481-0.533143-2.164293 6.249331-4.034896 12.019755-6.169513 17.673521-0.937348 2.478448-0.843204 4.3951 0.639566 6.619768 2.812045 4.217045 5.350868 8.647961 7.976672 13.009292 0.583285 0.967024 1.065262 2.006703 1.604544 3.040243C868.314707 726.738759 862.273107 726.884069 856.23867 726.672244zM913.675824 628.139114c-5.309936 1.333368-10.600429 2.778276-15.95539 3.873214-2.470261 0.503467-3.873214 1.765203-4.934382 4.13518-2.040473 4.552689-4.336772 8.975419-6.544043 13.449313-0.511653 1.039679-1.077541 2.052752-1.822508 3.470031-0.829901-1.155313-1.511423-2.006703-2.096754-2.927679-2.860141-4.51278-5.739724-9.012258-8.509814-13.59053-1.090844-1.801019-2.320858-2.738367-4.447289-2.950192-5.796006-0.583285-11.56643-1.518586-17.339924-2.340301-0.575098-0.081864-1.130753-0.333598-2.068102-0.6191 0.771573-1.103124 1.27504-1.958608 1.898233-2.700505 3.409656-4.051269 6.760984-8.16496 10.316973-12.063757 1.581008-1.732457 1.968841-3.453658 1.51347-5.724375-0.943488-4.680603-1.76111-9.391904-2.600221-14.096043-0.25378-1.411139-0.411369-2.839675-0.673335-4.676509 1.115404 0.285502 1.914606 0.404206 2.65855 0.695848 4.998851 1.984191 10.057053 3.821025 14.944364 6.093788 2.574638 1.193175 4.604878 0.918929 6.969739-0.453325 4.359284-2.532683 8.861832-4.77884 13.319353-7.117095 0.967024-0.50756 1.992377-0.901533 3.457752-1.553379-0.333598 5.062296-0.207731 9.755178-1.048889 14.236236-1.103124 5.898337 0.251733 10.061147 4.91494 13.579273 3.803629 2.870374 7.05365 6.603395 10.864442 10.258645C915.250692 627.572202 914.483212 627.937522 913.675824 628.139114zM913.921417 529.585517c-2.466168 1.203408-3.470031 2.963495-3.925403 5.661953-0.991584 5.870708-2.214435 11.695367-3.428076 17.984606-0.991584-0.633427-1.740644-0.969071-2.328022-1.509377-4.1536-3.807722-8.337899-7.576559-12.369725-11.528568-1.526773-1.493004-3.042289-1.983167-5.03262-1.704828-5.414313 0.753153-10.840906 1.37737-16.263405 2.046612-0.967024 0.119727-1.940189 0.209778-3.367701 0.363274 0.431835-1.270946 0.661056-2.230808 1.065262-3.093455 2.396583-5.117554 4.770653-10.246365 7.28901-15.292288 0.801249-1.606591 0.7552-2.88777-0.021489-4.455475-2.278903-4.581342-4.435009-9.231245-6.621814-13.868869-0.549515-1.165546-1.02126-2.372024-1.898233-4.424776 4.372587 0.473791 8.052396 0.847298 11.730159 1.277086 2.709715 0.314155 5.437849 0.575098 8.120958 1.092891 1.880837 0.36225 3.281743-0.056282 4.716418-1.457188 3.759627-3.673669 7.66047-7.186679 11.516288-10.752902 0.923022-0.857531 1.893116-1.662873 3.281743-2.874467 0.453325 2.026146 0.861624 3.637854 1.178849 5.265934 0.88516 4.562922 1.798972 9.121751 2.576685 13.703093 0.385786 2.26253 1.299599 3.730974 3.347235 4.751211 4.498454 2.238994 8.865925 4.776793 13.279445 7.211239 1.083681 0.595564 2.13257 1.258667 3.611248 2.13871-0.927115 0.725524-1.509377 1.310855-2.192945 1.690502C923.455561 524.452613 918.770865 527.220656 913.921417 529.585517z"
+                                    p-id="7764"></path>
+                                <path
+                                    d="M533.972942 413.272441c10.867512-1.549286 20.146852-3.318582 29.508058-4.123924 26.91807-2.316765 53.877071-2.956332 80.473823 2.803859 8.106632 1.75497 15.963577 5.173836 23.529903 8.710382 2.989077 1.396813 6.02932 4.805446 7.077186 7.966439 4.240581 12.764722 5.329379 25.570375-2.351558 37.768185-6.240121 9.909697-5.881964 11.258415 0.60989 21.10569 3.318582 5.036713 6.002714 10.54824 8.577353 16.035208 4.77577 10.18599 1.078565 18.569938-6.02318 26.037003-0.89437 0.941442-1.965771 1.706875-2.916423 2.598174-8.881274 8.316409-9.827833 16.706497-1.327228 25.52228 7.821129 8.110725 8.322549 17.593703 6.455015 27.239388-0.88209 4.575202-4.955872 8.742105-8.213056 12.539594-2.198062 2.560312-5.684466 3.939729-8.269337 6.219655-4.787026 4.219091-6.758937 9.477862-4.593622 15.848966 0.978281 2.879584 1.948375 5.768377 3.012613 8.616238 7.453762 19.954471-2.588965 38.919405-23.316032 42.425252-15.501042 2.62171-31.204699 5.206582-46.856168 5.458315-25.857924 0.413416-51.760874-0.673335-77.601402-2.012843-6.847965-0.354064-14.904455-2.188852-20.051685-6.333242-21.237697-17.10661-46.083571-24.013927-71.882144-29.042453-4.63967-0.905626-9.106402-2.680039-13.70821-3.825119-5.4225-1.346671-7.608282-4.481058-7.637957-10.296507-0.102331-20.082384-0.434905-40.168862-1.090844-60.238966-1.188058-36.430724-1.876744-72.915683-8.509814-108.909455-2.439562-13.230326 1.022283-22.605857 13.419637-29.943986 26.88737-15.911388 51.731198-35.07382 73.241095-57.855686 9.498328-10.0591 15.611559-23.408129 23.174815-35.31839 14.156418-22.288632 26.627451-45.385677 33.605376-71.170946 1.453095-5.372358 7.054673-8.369621 11.653411-5.461385 4.898567 3.097548 9.756201 7.341199 12.734022 12.259208 7.614421 12.570293 8.943696 27.199479 10.56359 41.469484 2.406816 21.181415-2.393513 41.270962-11.221576 60.322877-5.302773 11.440563-11.640108 22.385846-17.451464 33.587979C537.129842 406.085762 535.923364 409.027767 533.972942 413.272441z"
+                                    p-id="7765"></path>
+                                <path
+                                    d="M378.175597 594.48155c0 12.897751 0.222057 25.796526-0.072655 38.688137-0.218988 9.583263-2.558265 12.403494-11.93175 12.429077-12.011568 0.031722-24.039509-1.01512-36.040844-1.898233-5.497201-0.404206-8.332782-4.101411-9.128915-9.459442-3.813862-25.678846-7.91732-51.316759-11.337209-77.051887-3.677762-27.685549-6.752798-55.456033-9.997702-83.197864-1.163499-9.92914-2.420119-19.87056-2.953262-29.844725-0.481977-9.028631 2.804882-17.182334 8.413624-24.122397 1.188058-1.470491 4.228301-2.39556 6.180769-2.082428 12.127202 1.949398 24.198122 4.249791 36.263925 6.574742 13.285584 2.560312 19.584034 11.328 21.422915 24.420179 4.402263 31.346939 7.876388 62.74095 8.049327 94.472652 0.093121 17.018605 1.246387 34.033118 1.920746 51.049676C378.703623 594.465177 378.43961 594.471316 378.175597 594.48155z"
+                                    p-id="7766"></path>
+                                <path
+                                    d="M650.885676 748.258888c-2.329045-2.074242-4.415566-4.573155-7.045463-6.131651-4.488221-2.664689-5.006014-4.992711-0.928139-8.326643 1.828648-1.49505 3.917216-2.709715 6.005784-3.831258 6.918573-3.709485 8.456602-2.688225 8.933463 5.0449 0.153496 2.480494 1.157359 5.076622 2.367931 7.278777 3.454682 6.28617 7.494695 12.247952 10.779507 18.612916 3.302209 6.399757 1.139963 9.713222-5.932106 9.060353-8.563026-0.788969-17.066701-2.248204-25.604144-3.349281-2.454912-0.319272-4.941546-0.409322-7.797593-0.635473 0.165776 5.649674 1.428535 9.56996 6.444782 11.564383 5.110391 2.028193 4.047176 5.192256 0.535189 7.645121-2.7793 1.940189-6.048763 3.361561-9.295714 4.370541-7.472182 2.316765-8.697079 0.945535-7.079232-6.649444 0.379647-1.77646 0.14224-3.981684-0.573051-5.653767-3.25309-7.611352-3.898797-16.692171-11.991102-21.719674-0.74906-0.467651-0.406253-5.016247 0.350994-5.322216 4.585435-1.845021 9.555633-4.447289 14.185071-4.082992 8.423857 0.660032 16.703427 3.219321 25.045419 4.982478C649.823484 750.161215 650.356626 749.210563 650.885676 748.258888z"
+                                    p-id="7767"></path>
+                                <path
+                                    d="M447.845353 774.980483c-1.721201 4.091178-2.701528 7.988951-4.838192 11.060917-2.214435 3.181459-4.881171 3.453658-6.27389-1.352811-0.48607-1.679245-2.214435-2.983961-3.375887-4.458545-1.044796 1.461281-2.849908 2.868327-2.954285 4.391007-0.138146 2.026146 0.518816 5.483898 1.760087 5.984295 5.301749 2.146896 10.821463 4.451382 16.436344-0.025583 1.411139-1.127683 4.089132-0.62524 6.183839-0.873903 0.001023 2.238994 0.685615 4.770653-0.118704 6.653537-2.894933 6.767124-6.141884 7.578606-13.207813 5.042853-10.111289-3.637854-20.415982-6.721075-30.54876-10.298554-2.035356-0.719384-3.673669-2.589988-5.494131-3.931542 1.436722-1.534959 2.720971-3.26537 4.341888-4.569062 3.900843-3.13541 10.29446-21.355377 9.05626-26.302039-1.227967-4.894474 0.373507-6.653537 5.117554-5.364171 10.141988 2.753717 20.334117 5.370311 30.30112 8.676613 1.857301 0.618077 3.498684 4.071735 3.875261 6.437619 0.302899 1.912559-1.452071 4.15667-2.295276 6.255471-1.955538-1.205455-3.846608-2.534729-5.880941-3.579525-3.393283-1.74269-6.779404-3.665483-10.392698-4.705162-0.971118-0.279363-3.333932 2.110057-3.998057 3.723811-0.560772 1.36509 0.412392 3.373841 0.706081 5.098111 1.496074-0.751107 2.976798-1.537006 4.495384-2.24411 1.26583-0.589424 3.451612-1.818415 3.714602-1.499144C445.813067 770.755252 446.6839 772.824377 447.845353 774.980483z"
+                                    p-id="7768"></path>
+                                <path
+                                    d="M497.037728 775.871783c-5.733585-3.252067-8.872065-1.744737-12.044314 1.74883-1.183965 1.302669-3.801583 1.277086-5.765307 1.856277-0.525979-2.12029-1.871627-4.441149-1.428535-6.330172 1.430582-6.127558 5.094018-7.670703 11.07422-7.058766 7.898901 0.809435 15.891945 0.627287 23.835871 1.02126 2.205225 0.106424 4.387937 0.73985 6.582929 1.12973-0.661056 2.372024-0.818645 5.068436-2.074242 7.05672-4.177136 6.617721-8.749268 12.975523-13.166881 19.432585-1.196245 1.750877-2.37714 3.514033-4.02057 5.932106 6.357801 1.526773 11.405771 2.270716 15.289218-3.717671 0.880043-1.360997 3.886517-2.579755 5.188162-2.050706 1.435699 0.585331 2.732228 3.206018 2.883677 5.042853 0.653893 7.90504-3.771907 11.616572-11.406794 10.810207-11.139711-1.176802-22.332634-1.798972-33.491789-2.818185-1.796926-0.163729-3.51915-1.165546-5.276167-1.77646 0.877997-1.854231 1.422396-4.001127 2.691295-5.5279C482.685859 792.483112 489.641271 784.496208 497.037728 775.871783z"
+                                    p-id="7769"></path>
+                                <path
+                                    d="M540.887422 806.996664c10.68741-10.042727 14.46341-22.902616 14.936177-37.180807 0.182149-5.426593 5.241374-8.90788 10.636245-6.928806 3.122107 1.14508 6.161327 3.212158 8.547677 5.573949 6.15314 6.104021 11.756765 12.770861 17.924231 18.859533 2.286066 2.258437 5.750981 3.263323 8.233522 5.374404 1.069355 0.911766 1.928932 3.823072 1.311879 4.714372-2.874467 4.16281-23.480784 8.679683-27.984355 6.463202-0.514723-0.25378-0.799202-0.977257-1.38044-1.723248 1.017166-1.514493 2.050706-3.051499 4.399193-6.547113-7.609305 1.153266-13.420661 2.034333-19.820418 3.006474 5.748934 7.691169 4.826935 9.699919-4.269233 10.694573-4.140297 0.455371-8.370645 0.077771-12.558014 0.077771C540.870026 808.587905 540.879236 807.794843 540.887422 806.996664zM563.308061 779.618107c-1.032516 4.111644-1.574868 6.282077-2.330068 9.29162 3.134387-0.369414 5.454222-0.641613 9.101285-1.069355C567.539432 784.758174 565.982984 782.863011 563.308061 779.618107z"
+                                    p-id="7770"></path>
+                                <path
+                                    d="M386.513496 743.423767c-2.992147 8.951883-12.769838 14.81645-10.005888 26.492374 0.856507 3.621481-2.432399 4.820796-5.012154 3.467985-6.426363-3.367701-12.82919-6.957459-18.661012-11.258415-3.665483-2.704598-2.299369-5.441942 1.986237-6.861268 5.601578-1.853208 15.21247-16.427134 14.925944-22.63451-2.719948 0.237407-5.504364 0.959861-8.119935 0.555655-1.816369-0.281409-4.285606-1.790786-4.835122-3.344165-0.533143-1.511423 0.473791-4.28663 1.727341-5.606695 4.29277-4.520967 9.892301-3.871167 14.858406-0.433882 7.205099 4.990664 14.84715 9.447163 22.675442 13.365402 5.145184 2.574638 7.862062 11.667737 3.818979 15.754822-2.608407 2.636037-7.121188 1.463328-8.982582-2.539846-0.959861-2.060939-1.456165-4.344958-2.161223-6.52767C387.99115 743.710292 387.253346 743.56396 386.513496 743.423767z"
+                                    p-id="7771"></path>
+                                <path
+                                    d="M563.308061 779.618107c2.672876 3.247974 4.231371 5.13802 6.768147 8.222265-3.645017 0.427742-5.963829 0.699941-9.101285 1.069355C561.733193 785.897114 562.277592 783.726681 563.308061 779.618107z"
+                                    fill="#FFFFFF" p-id="7772"></path>
                             </svg>
+
                         </div>
                     </div>
                 </div>
-                <div class="education_box">
-                    <details>
-                        <summary><b>Education</b></summary>
-                        <div class="education">
-                            <div class="school">
-                                <img src="/assets/neu.jpg" />
-                            </div>
-                            <div class="school_info">
-                                <div><b>Northeastern University</b></div>
-                                <div>Master of Science - MS, Management Information Systems, General</div>
-                                <div class="date">Jan 2022 - Dec 2023</div>
-                                <div>Grade: 3.34</div>
-                            </div>
-                        </div>
-                        <div class="education">
-                            <div class="school">
-                                <img src="/assets/zstu.jpg" />
-                            </div>
-                            <div class="school_info">
-                                <div><b>Zhejiang Sci-Tech University</b></div>
-                                <div>Bachelor's degree, Management Information Systems, General</div>
-                                <div class="date">Aug 2016 - Jun 2020</div>
-                                <div>Grade: 3.28</div>
-                            </div>
-                        </div>
-                    </details>
-                </div>
-                <table>
-                    <tr>
-                        <td>LinkedIn</td>
-                        <td><a href="https://www.linkedin.com/in/kun-li-355638249/"
-                                target="_blank">https://www.linkedin.com/in/kun-li-355638249/</a></td>
-                    </tr>
-                    <tr>
-                        <td>Github</td>
-                        <td><a href="https://github.com/likun945/INFO6150"
-                                target="_blank">https://github.com/likun945/INFO6150</a></td>
-                    </tr>
-                    <tr>
-                        <td>Email</td>
-                        <td><a href="mailto:li.kun1@northeastern.edu" target="_blank">li.kun1@northeastern.edu</a></td>
-                    </tr>
-                    <tr>
-                        <td>Tel</td>
-                        <td><a href="tel:+17819578803" target="_blank">Tel(+1)781-957-8803</a></td>
-                    </tr>
-                </table>
+            </div>
+            <footer class="footer">
+                <p>&copy; 2023 Created by KUN LI. All rights reserved.</p>
+            </footer>
+        </div>
+    </transition>
+    <audio ref="audio" @play="startAnimation" @pause="stopAnimation">
+        <source src="/assets/name_audio.m4a" type="audio/mp4">
+    </audio>
+    <div class="mask" v-show="mask" ref="mask">
+        <div class="close">
+            <svg t="1694920967106" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                p-id="4213" width="28" height="28" @click="mask = !mask">
+                <path
+                    d="M555.096563 512.000978L894.74651 172.351031a29.254124 29.254124 0 0 0 8.626944-20.779801c0-16.210984-13.14293-29.350001-29.350001-29.350001a29.244341 29.244341 0 0 0-20.752407 8.597594l-0.001957-0.001957-339.679297 339.677341L173.918321 130.822736a29.256081 29.256081 0 0 0-20.756321-8.601507c-16.209027 0-29.351957 13.140974-29.351957 29.350001a29.252167 29.252167 0 0 0 8.59955 20.754364l339.677341 339.677341-339.679298 339.677341a29.248254 29.248254 0 0 0-8.59955 20.752407c0 16.209027 13.14293 29.348044 29.351957 29.348044 8.108427 0 15.445927-3.2872 20.756321-8.601507l339.673428-339.671471 339.679297 339.679298 0.001957-0.001957a29.252167 29.252167 0 0 0 20.752407 8.597594c16.20707 0 29.350001-13.139017 29.350001-29.350001 0-8.120167-3.300897-15.465494-8.626944-20.7798L555.096563 512.000978z"
+                    fill="#525252" p-id="4214"></path>
+            </svg>
+        </div>
+        <div class="mask_btns">
+            <button class="selected">Home</button>
+            <button id="showDialogButton2" @click="mask = false">Video</button>
+            <button @click="toWork">Work</button>
+        </div>
+    </div>
+    <div id="dialogOverlay" class="overlay">
+        <div id="dialogBox" class="dialog">
+            <span id="closeDialogButton" class="close-button" @click="closeDialog">&times;</span>
+            <h2>Introduction</h2>
+            <div class="video_box">
+                <video controls width="200px" height="300px" ref="video">
+                    <source src="/assets/intro.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
             </div>
         </div>
     </div>
-    <footer class="footer">
-        <p>&copy; 2023 Created by KUN LI. All rights reserved.</p>
-    </footer>
 </body>
 <script>
     const { createApp, ref } = Vue
@@ -180,8 +563,12 @@
             return {
                 showArrow: false,
                 slideDistance: 0,
-                numOfphoto: 6,
-                index: 0
+                numOfphoto: 7,
+                index: 0,
+                mask: false,
+                showFullWorkText: [false, false, false, false],
+                isPlaying: false,
+                hasRating: false
             }
         },
         computed: {
@@ -207,8 +594,6 @@
                     this.index += this.maxSlideCount;
                 }
                 this.slideDistance = this.index * (20 + 276);
-                console.log(this.maxSlideCount, this.index)
-
             },
             leftScroll() {
                 if (this.index - this.maxSlideCount < 0) {
@@ -219,11 +604,64 @@
                 this.slideDistance = this.index * (20 + 276);
             },
             toWork() {
-                window.location.hash = 'work';
+                this.mask = false;
+                window.location.hash = '#work';
+                this.$refs.work.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                })
+            },
+            clickMask() {
+                this.mask = true;
+            },
+            seeMore(index) {
+                this.showFullWorkText[index] = true;
+            },
+            toggleAudio() {
+                const audio = this.$refs.audio;
+                if (audio.paused) {
+                    audio.play();
+                } else {
+                    audio.pause();
+                }
+            },
+            startAnimation() {
+                this.isPlaying = true;
+            },
+            stopAnimation() {
+                this.isPlaying = false;
+            },
+            closeDialog() {
+                this.$refs.video.pause();
+            },
+            submitForm(e) {
+                e.preventDefault();
+                this.hasRating = true;
             }
         }
     }).mount('#app')
+    const showDialogButton = document.getElementById('showDialogButton');
+    const showDialogButton2 = document.getElementById('showDialogButton2');
+    const dialogOverlay = document.getElementById('dialogOverlay');
+    const closeDialogButton = document.getElementById('closeDialogButton');
 
+    showDialogButton.addEventListener('click', () => {
+        dialogOverlay.style.display = 'block';
+    });
+
+    showDialogButton2.addEventListener('click', () => {
+        dialogOverlay.style.display = 'block';
+    });
+
+    closeDialogButton.addEventListener('click', () => {
+        dialogOverlay.style.display = 'none';
+    });
+
+    dialogOverlay.addEventListener('click', (event) => {
+        if (event.target === dialogOverlay) {
+            dialogOverlay.style.display = 'none';
+        }
+    });
 </script>
 
 </html>
