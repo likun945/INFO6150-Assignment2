@@ -1,0 +1,259 @@
+body,
+menu,
+p {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+h1 {
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    font-size: 42px;
+}
+
+html {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.header {
+    height: 72px;
+    display: flex;
+    flex-direction: row;
+    padding: 0 50px;
+}
+
+.header div {
+    width: 50%;
+}
+
+.delimiter {
+    width: calc(100% - 100px);
+}
+
+.name {
+    /* position: relative; */
+    margin: 22px 0px;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+}
+
+.menu button {
+    width: 89px;
+    font-size: 18px;
+    line-height: 28px;
+    height: 28px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.menu button:hover {
+    color: #595959;
+}
+
+.tabs {
+    display: flex;
+    justify-content: flex-end;
+    margin: 22px 0px;
+}
+
+.name p {
+    font-size: 28px;
+    font-weight: 600;
+    font-family: arial;
+}
+
+.content {
+    background: white;
+    margin: 15px 50px;
+    display: inline-flex;
+    justify-content: center;
+    width: calc(100% - 100px);
+}
+
+.photo {
+    float: left;
+}
+
+.photo img {
+    width: 120px;
+    height: 120px;
+}
+
+.descrption {
+    min-width: 668px;
+    max-width: 1000px;
+    width: 75%;
+}
+
+.status_box {
+    display: flex;
+}
+
+.status {
+    font-size: 18px;
+    flex-grow: 1;
+}
+
+.base {
+    display: flex;
+    align-items: center;
+    font-size: 14px;;
+}
+
+.base div {
+    margin-left: 6px;
+}
+
+.footer {
+    padding: 0px 50px;
+    font-weight: 500;
+    height: 32px;
+}
+
+.footer p {
+    background: #f5f5f5;
+    height: 14px;
+    font-size: 14px;
+    padding: 9px;
+}
+
+.icon-location {
+    width: 18px;
+    height: 18px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #f0f0f0;
+    border: none;
+    margin: 20px auto;
+}
+
+tr {
+    text-align: left;
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+td:nth-child(1) {
+    font-weight: bold;
+    color: #fff;
+    padding: 10px;
+    background-color: #69c0ff;
+    border-right: 1px solid #007bff;
+}
+
+table a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+a:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.about_box,
+.education_box,
+.photo_box {
+    margin-top: 20px;
+}
+
+.school img {
+    width: 48px;
+    height: 48px;
+}
+
+.education {
+    display: flex;
+    margin-top: 15px;
+}
+
+.school {
+    width: 70px;
+}
+
+.school_info div {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.school_info .date {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.photo_box .desc {
+    font-size: 14px;
+    text-align: center;
+    width: 276px;
+}
+
+
+.photo_box {
+    position: relative;
+    overflow: hidden;
+}
+
+.photo_box_inner {
+    display: flex;
+    margin-left: 0px;
+    transition: all ease-out 0.75s;
+}
+
+.gallery {
+    margin-right: 20px;
+}
+
+.photo_box .btn {
+    position: absolute;
+    top: 50%;
+    height: 24px;
+    width: 24px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    transform: translate(0, -50%);
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.leftBtn {
+    left: 5px;
+}
+
+.rightBtn {
+    right: 5px;
+}
+
+
+.photo_box .btn:hover {
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+}
+
+.btn_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+

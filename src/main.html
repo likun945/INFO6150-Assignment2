@@ -1,11 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" href="/assets/favicon-32x32.png" sizes="32x32" type="image/x-icon">
+    <title>KUN LI | Software development engineer</title>
+    <link rel="stylesheet" href="styles/index.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
-<body>
-    
+
+<body id="app">
+    <header class="header">
+        <div class="name">
+            <p>Kun Li</p>
+        </div>
+        <div class="tabs">
+            <menu class="menu">
+                <button>Home</button>
+                <button @click="toWork">Work</button>
+                <button>About</button>
+            </menu>
+        </div>
+    </header>
+    <hr class="delimiter" />
+    <div class="content">
+        <div class="photo">
+            <img src="/assets/me.png" alt="Image Description">
+        </div>
+        <div class="descrption">
+            <h1>Kun Li</h1>
+            <div class="right_desc">
+                <div class="status_box">
+                    <div class="status">Information Systems | NEU Graduate student | experienced developer</div>
+                    <div class="base">
+                        <svg t="1694890181354" class="icon-location" viewBox="0 0 1024 1024" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" p-id="4742" width="200" height="200">
+                            <path d="M512 512m-512 0a512 512 0 1 0 1024 0 512 512 0 1 0-1024 0Z" fill="#B3DFFF"
+                                p-id="4743"></path>
+                            <path
+                                d="M777.076364 232.727273L145.221818 530.385455a9.774545 9.774545 0 0 0 2.327273 18.618181l276.945454 50.269091 50.269091 276.945455a9.774545 9.774545 0 0 0 18.618182 2.327273L791.272727 246.923636a9.774545 9.774545 0 0 0-14.196363-14.196363z"
+                                fill="#439DFF" p-id="4744"></path>
+                        </svg>
+                        <div>Boston, MA</div>
+                    </div>
+                </div>
+                <div class="about_box">
+                    <p><b>About me: </b> I am a self-motivated software engineer with nearly 2 years of working
+                        experience in full-stack
+                        software development, mostly proficient in Web development, enjoy working in a fast-paced and
+                        agile
+                        team, and love to collaborate with other teams cross-functionally.
+                    </p>
+                </div>
+                <div class="photo_box" @mouseover="showArrow=true" @mouseleave="showArrow=false" ref="photo_box">
+                    <div class="photo_box_inner" :style="{marginLeft:-slideDistance+'px'}">
+                        <!-- <div class="video_box">
+                            <video controls width="200px" height="300px">
+                                <source src="/assets/intro.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="desc">Introduction</div>
+                        </div> -->
+                        <div class="gallery">
+                            <a target="_blank" href="/assets/cargurus.jpg">
+                                <img src="/assets/cargurus.jpg" alt="Cinque Terre" width="276" height="195">
+                            </a>
+                            <div class="desc">The first1 day at Cargurus</div>
+                        </div>
+                        <div class="gallery">
+                            <a target="_blank" href="/assets/cargurus.jpg">
+                                <img src="/assets/cargurus.jpg" alt="Cinque Terre" width="276" height="195">
+                            </a>
+                            <div class="desc">The first2 day at Cargurus</div>
+                        </div>
+                        <div class="gallery">
+                            <a target="_blank" href="/assets/cargurus.jpg">
+                                <img src="/assets/cargurus.jpg" alt="Cinque Terre" width="276" height="195">
+                            </a>
+                            <div class="desc">The first3 day at Cargurus</div>
+                        </div>
+                        <div class="gallery">
+                            <a target="_blank" href="/assets/cargurus.jpg">
+                                <img src="/assets/cargurus.jpg" alt="Cinque Terre" width="276" height="195">
+                            </a>
+                            <div class="desc">The first4 day at Cargurus</div>
+                        </div>
+                        <div class="gallery">
+                            <a target="_blank" href="/assets/cargurus.jpg">
+                                <img src="/assets/cargurus.jpg" alt="Cinque Terre" width="276" height="195">
+                            </a>
+                            <div class="desc">The first5 day at Cargurus</div>
+                        </div>
+                        <div class="gallery">
+                            <a target="_blank" href="/assets/cargurus.jpg">
+                                <img src="/assets/cargurus.jpg" alt="Cinque Terre" width="276" height="195">
+                            </a>
+                            <div class="desc">The first6 day at Cargurus</div>
+                        </div>
+                    </div>
+                    <div class="btn" v-if="showArrow && index > 0" @click="leftScroll">
+                        <div class="btn_wrapper">
+                            <svg t="1694896788721" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" p-id="6335" width="62.5%" height="62.5%">
+                                <path d="M512 640v256H384L0 512l384-384h128v256h512v256H512z" fill="#F04925"
+                                    p-id="6336"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="btn rightBtn" v-if="showArrow && (index + maxSlideCount < numOfphoto)"
+                        @click="rightScroll">
+                        <div class="btn_wrapper">
+                            <svg t="1694899453035" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg" p-id="4236" width="62.5%" height="62.5%">
+                                <path d="M512 384V128h128l384 384-384 384H512v-256H0V384h512z" fill="#F04925"
+                                    p-id="4237"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="education_box">
+                    <details>
+                        <summary><b>Education</b></summary>
+                        <div class="education">
+                            <div class="school">
+                                <img src="/assets/neu.jpg" />
+                            </div>
+                            <div class="school_info">
+                                <div><b>Northeastern University</b></div>
+                                <div>Master of Science - MS, Management Information Systems, General</div>
+                                <div class="date">Jan 2022 - Dec 2023</div>
+                                <div>Grade: 3.34</div>
+                            </div>
+                        </div>
+                        <div class="education">
+                            <div class="school">
+                                <img src="/assets/zstu.jpg" />
+                            </div>
+                            <div class="school_info">
+                                <div><b>Zhejiang Sci-Tech University</b></div>
+                                <div>Bachelor's degree, Management Information Systems, General</div>
+                                <div class="date">Aug 2016 - Jun 2020</div>
+                                <div>Grade: 3.28</div>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+                <table>
+                    <tr>
+                        <td>LinkedIn</td>
+                        <td><a href="https://www.linkedin.com/in/kun-li-355638249/"
+                                target="_blank">https://www.linkedin.com/in/kun-li-355638249/</a></td>
+                    </tr>
+                    <tr>
+                        <td>Github</td>
+                        <td><a href="https://github.com/likun945/INFO6150"
+                                target="_blank">https://github.com/likun945/INFO6150</a></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><a href="mailto:li.kun1@northeastern.edu" target="_blank">li.kun1@northeastern.edu</a></td>
+                    </tr>
+                    <tr>
+                        <td>Tel</td>
+                        <td><a href="tel:+17819578803" target="_blank">Tel(+1)781-957-8803</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2023 Created by KUN LI. All rights reserved.</p>
+    </footer>
 </body>
+<script>
+    const { createApp, ref } = Vue
+    createApp({
+        data() {
+            return {
+                showArrow: false,
+                slideDistance: 0,
+                numOfphoto: 6,
+                index: 0
+            }
+        },
+        computed: {
+            maxWidth() {
+                return 276 * this.numOfphoto + (this.numOfphoto - 1) * 20;
+            },
+            screenWidth() {
+                return this.$refs.photo_box.offsetWidth;
+            },
+            maxSlideCount() {
+                if (this.screenWidth < 3 * (276 + 20)) {
+                    return 2;
+                } else {
+                    return 3;
+                }
+            }
+        },
+        methods: {
+            rightScroll() {
+                if (this.index + this.maxSlideCount > this.numOfphoto) {
+                    this.index = this.numOfphoto;
+                } else {
+                    this.index += this.maxSlideCount;
+                }
+                this.slideDistance = this.index * (20 + 276);
+                console.log(this.maxSlideCount, this.index)
+
+            },
+            leftScroll() {
+                if (this.index - this.maxSlideCount < 0) {
+                    this.index = 0;
+                } else {
+                    this.index = this.index - this.maxSlideCount;
+                }
+                this.slideDistance = this.index * (20 + 276);
+            },
+            toWork() {
+                window.location.hash = 'work';
+            }
+        }
+    }).mount('#app')
+
+</script>
+
 </html>
