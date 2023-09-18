@@ -21,7 +21,6 @@ The **Portfolio** HTML page serves as a user interface for showcasing my work an
 12. [Summary](#summary)
 13. [Menu](#menu)
 14. [Contact](#contact)
-15. [Mobile Adaptation](#mobile)
 
 ## Page Structure <a name="page-structure"></a>
 
@@ -131,11 +130,18 @@ In this code, the <a> element is used to create a hyperlink. The href attribute 
 ## Button <a name="button"></a>
 
 ```html
-<button type="button" class="green" @click="tab = 0">BoardGame List</button>
+        <div class="mask_btns">
+            <button class="selected">Home</button>
+            <button id="showDialogButton2" @click="mask = false">Video</button>
+            <button @click="toWork">Work</button>
+        </div>
 ```
-<img width="234" alt="1694321162503" src="https://github.com/likun945/INFO6150/assets/98712201/6e407563-a7e1-455e-8b68-0ac4844e5926">
+![image](https://github.com/likun945/INFO6150-Assignment2/assets/98712201/ae4bdb98-4898-4791-a26d-b66c00e1423b)
 
-Buttons are created using the `<button>` element. They can trigger actions when clicked, we could switch the tab card by clicking the button.
+The first button represents the active "Home" tab.
+The second button opens a dialog when clicked.
+The third button triggers navigation to the "Work" section.
+These buttons enhance user interaction and navigation on the page.
 
 ## Audio <a name="audio"></a>
 
@@ -256,11 +262,3 @@ To provide contact information on my website, I use the following HTML code:
 
 - Use `<a href="mailto:li.kun1@northeastern.edu" target="_blank">li.kun1@northeastern.edu</a>` for email addresses. This creates a link that, when clicked, opens the user's default email client with the specified email address pre-filled in the "To" field.
 ![image](https://github.com/likun945/INFO6150/assets/98712201/9f6efa11-9331-403b-b6fd-7b008808cd14)
-
-
-## Mobile Adaption <a name="mobile"></a>
-Ensuring my website looks and functions seamlessly on mobile devices is crucial for providing a user-friendly experience. I have optimized the website layout and elements to automatically adjust to different screen sizes and orientations.
-![image](https://github.com/likun945/INFO6150/assets/98712201/f0186e54-cff5-4a97-8722-08f4bf431525)
-![image](https://github.com/likun945/INFO6150/assets/98712201/73650bca-6c7e-4c31-833e-7d37df57ca70)
-![image](https://github.com/likun945/INFO6150/assets/98712201/80385f4a-9525-458a-82cd-9a4be5f59465)
-
