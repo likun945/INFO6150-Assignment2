@@ -463,19 +463,19 @@
                                 <span style="margin-right: 8px"><b>Rate my website</b></span>
                                 <div class="rating">
                                     <div>
-                                        <input type="radio" name="rate">
+                                        <input type="radio" name="rate" @click="rating='Excellent'">
                                         <label>Excellent</label>
                                     </div>
                                     <div>
-                                        <input type="radio" name="rate">
+                                        <input type="radio" name="rate" @click="rating='Very Good'">
                                         <label>Very Good</label>
                                     </div>
                                     <div>
-                                        <input type="radio" name="rate">
+                                        <input type="radio" name="rate" @click="rating='Good'">
                                         <label>Good</label>
                                     </div>
                                     <div>
-                                        <input type="radio" name="rate">
+                                        <input type="radio" name="rate" @click="rating='Fair'">
                                         <label>Fair</label>
                                     </div>
                                 </div>
@@ -549,7 +549,7 @@
             <h2>Introduction</h2>
             <div class="video_box">
                 <video controls width="200px" height="300px" ref="video">
-                    <source src="/assets/intro.mp4" type="video/mp4">
+                    <source src="/assets/intro - Compressed with FlexClip.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
@@ -568,6 +568,7 @@
                 mask: false,
                 showFullWorkText: [false, false, false, false],
                 isPlaying: false,
+                rating: null,
                 hasRating: false
             }
         },
@@ -636,6 +637,10 @@
             },
             submitForm(e) {
                 e.preventDefault();
+                if(!this.rating) {
+                    alert("You haven't selected your option");
+                    return;
+                }
                 this.hasRating = true;
             }
         }
