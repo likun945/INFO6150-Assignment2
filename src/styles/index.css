@@ -47,8 +47,8 @@ body {
 }
 
 .name {
-    /* position: relative; */
     margin: 22px 0px;
+    display: flex;
 }
 
 .menu {
