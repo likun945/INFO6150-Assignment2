@@ -475,6 +475,21 @@ video {
     }
 }
 
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
+  .photo_box {
+        display: none;
+    }
+
+    #box {
+        display: block;
+    }
+    .photo {
+        float: none;
+        height: 100%;
+        display: flex;
+    }
+}
+
 @media screen and (max-width: 887px) {
     .tabs {
         display: none;
